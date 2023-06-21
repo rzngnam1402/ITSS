@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WorkerHomepageViewController">
+  <tabs>
+    <Tab text="Homepage">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Text layoutX="160.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Officer ID">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="160.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <TextField layoutX="292.0" layoutY="94.0" />
+                  <TextField layoutX="292.0" layoutY="128.0" />
+                  <TextField layoutX="292.0" layoutY="164.0" />
+                  <Text layoutX="160.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="160.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <TextField layoutX="292.0" layoutY="199.0" />
+                  <Text layoutX="160.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attendance Information">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <TableView layoutX="160.0" layoutY="323.0" prefHeight="421.0" prefWidth="940.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="No" />
+                      <TableColumn prefWidth="246.2241973876953" text="Officer Name" />
+                        <TableColumn prefWidth="246.5982666015625" text="Date" />
+                        <TableColumn prefWidth="187.9017333984375" text="In Time" />
+                        <TableColumn prefWidth="183.35400390625" text="Out Time" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Overall Attedance Information">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Text layoutX="158.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Officer ID">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="160.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <TextField layoutX="292.0" layoutY="94.0" />
+                  <TextField layoutX="292.0" layoutY="164.0" />
+                  <TextField layoutX="292.0" layoutY="128.0" />
+                  <Text layoutX="159.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="159.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <TextField layoutX="292.0" layoutY="199.0" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

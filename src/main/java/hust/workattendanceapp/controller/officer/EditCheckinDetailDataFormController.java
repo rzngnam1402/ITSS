@@ -1,4 +1,4 @@
-package hust.workattendanceapp.controller;
+package hust.workattendanceapp.controller.officer;
 
 public class EditCheckinDetailDataFormController {
 }

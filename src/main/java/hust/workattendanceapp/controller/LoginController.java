@@ -1,6 +1,6 @@
 package hust.workattendanceapp;
 
 
-public class HelloController {
+public class LoginController {
 
 }

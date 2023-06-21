@@ -1,4 +1,4 @@
-package hust.workattendanceapp;
+package hust.workattendanceapp.controller;
 
 
 public class LoginController {

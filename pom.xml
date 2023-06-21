@@ -69,7 +69,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>hust.workattendanceapp/hust.workattendanceapp.HelloApplication</mainClass>
+                            <mainClass>hust.workattendanceapp/hust.workattendanceapp.WorkAttendanceApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

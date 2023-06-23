@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.workattendanceapp.controller.LoginController">
    <children>
-      <Button layoutX="589.0" layoutY="564.0" mnemonicParsing="false" onAction="#switchToWorkerHomepage" text="Login">
+      <Button layoutX="589.0" layoutY="564.0" mnemonicParsing="false" onAction="#handleLogin" text="Login">
          <font>
             <Font size="18.0" />
          </font>

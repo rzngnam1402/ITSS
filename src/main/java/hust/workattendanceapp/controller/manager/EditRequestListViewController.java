@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -42,6 +43,11 @@ public class EditRequestListViewController implements Initializable {
     }
 
     public void deleteEditDataRequest(ActionEvent e) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Delete Data!");
+        String s = "Do you want to delete?";
+        alert.setContentText(s);
+        alert.showAndWait();
         EditDataRequest selected = table.getSelectionModel().getSelectedItem();
         requestList.remove(selected);
     }

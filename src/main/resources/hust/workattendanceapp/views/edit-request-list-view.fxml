@@ -31,9 +31,20 @@
                 <TableColumn fx:id="statusColumn" prefWidth="156.4486083984375" text="Status" />
             </columns>
         </TableView>
-        <Button layoutX="1098.0" layoutY="734.0" mnemonicParsing="false" onAction="#deleteEditDataRequest" prefHeight="26.0" prefWidth="92.0" text="Delete">
+        <Button layoutX="1046.0" layoutY="679.0" mnemonicParsing="false" onAction="#deleteEditDataRequest" prefHeight="26.0" prefWidth="92.0" text="Delete">
          <font>
             <Font size="18.0" />
-         </font></Button>
+         </font>
+      </Button>
+      <Button layoutX="1046.0" layoutY="737.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="92.0" stylesheets="@../styles/cancel-button-style.css" text="Reject" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button defaultButton="true" layoutX="1162.0" layoutY="737.0" mnemonicParsing="false" onAction="#confirmEdit" prefHeight="26.0" prefWidth="92.0" text="Approve">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

@@ -22,10 +22,16 @@ public class LoginController {
     @FXML
     private TextField usernameInput;
 
-    public void switchToWorkerHomepage(ActionEvent event) throws IOException {
+    public void handleLogin(ActionEvent event) throws IOException {
         String username = usernameInput.getText();
         if (username.equals("worker")) {
             root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.WORKER_HOMEPAGE_VIEW_FXML));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else if (username.equals("manager")) {
+            root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.MANAGER_HOMEPAGE_VIEW_FXML));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -38,4 +44,5 @@ public class LoginController {
             alert.showAndWait();
         }
     }
+
 }

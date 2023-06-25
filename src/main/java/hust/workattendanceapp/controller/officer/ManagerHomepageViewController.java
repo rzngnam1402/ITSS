@@ -40,7 +40,6 @@ public class ManagerHomepageViewController {
         stage.show();
     }
 
-
     public void switchToImportDataView(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.IMPORT_DATA_BY_EXCEL_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

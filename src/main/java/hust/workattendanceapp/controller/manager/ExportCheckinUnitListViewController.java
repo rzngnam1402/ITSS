@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ExportCheckinUnitListViewController implements Initializable{
+public class ExportCheckinUnitListViewController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -58,6 +58,14 @@ public class ExportCheckinUnitListViewController implements Initializable{
 
     public void switchToEditDataRequestsList(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_REQUEST_LIST_VIEW_FXML));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToImportDataView(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.IMPORT_DATA_BY_EXCEL_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

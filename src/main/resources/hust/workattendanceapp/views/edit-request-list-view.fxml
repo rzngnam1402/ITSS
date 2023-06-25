@@ -34,12 +34,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="1067.0" layoutY="737.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="92.0" stylesheets="@../styles/cancel-button-style.css" text="Reject" textFill="WHITE">
+      <Button layoutX="1067.0" layoutY="737.0" mnemonicParsing="false" onAction="#rejectEditDataRequest" prefHeight="26.0" prefWidth="92.0" stylesheets="@../styles/cancel-button-style.css" text="Reject" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button defaultButton="true" layoutX="1171.0" layoutY="738.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="92.0" text="Approve">
+      <Button defaultButton="true" layoutX="1171.0" layoutY="738.0" mnemonicParsing="false" onAction="#approveEditDataRequest" prefHeight="26.0" prefWidth="92.0" text="Approve">
          <font>
             <Font size="18.0" />
          </font>

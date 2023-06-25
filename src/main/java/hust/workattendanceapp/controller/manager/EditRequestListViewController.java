@@ -63,6 +63,18 @@ public class EditRequestListViewController implements Initializable {
         requestList.remove(selected);
     }
 
+    public void rejectEditDataRequest(ActionEvent e) {
+        EditDataRequest selected = table.getSelectionModel().getSelectedItem();
+        requestList.get(selected.getRequestID() - 1).setStatus("rejected");
+        table.refresh();
+    }
+
+    public void approveEditDataRequest(ActionEvent e) {
+        EditDataRequest selected = table.getSelectionModel().getSelectedItem();
+        requestList.get(selected.getRequestID() - 1).setStatus("approved");
+        table.refresh();
+    }
+
     public void switchToHomepage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.MANAGER_HOMEPAGE_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

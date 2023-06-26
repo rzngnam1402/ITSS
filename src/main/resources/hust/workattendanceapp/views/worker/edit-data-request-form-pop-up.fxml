@@ -16,7 +16,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="534.0" layoutY="429.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="92.0" text="Send">
+      <Button layoutX="534.0" layoutY="429.0" mnemonicParsing="false" onAction="#confirmSendRequest" prefHeight="26.0" prefWidth="92.0" text="Send">
          <font>
             <Font size="18.0" />
          </font>

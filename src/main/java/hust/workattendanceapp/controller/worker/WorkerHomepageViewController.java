@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class WorkerHomepageViewController {
-
+    public static String employeeID;
 
     private Stage stage;
     private Scene scene;
@@ -23,8 +23,14 @@ public class WorkerHomepageViewController {
     @FXML
     private Label employeeIDLabel;
     public void init(String employeeID) {
-        employeeIDLabel.setText(employeeID);
+        WorkerHomepageViewController.employeeID = employeeID;
+        employeeIDLabel.setText(WorkerHomepageViewController.employeeID);
     }
+
+    public Label getEmployeeIDLabel() {
+        return employeeIDLabel;
+    }
+
     public void switchToPersonalAttendance(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.PERSONAL_ATTENDANCE));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

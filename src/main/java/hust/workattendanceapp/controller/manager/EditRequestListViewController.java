@@ -31,7 +31,7 @@ public class EditRequestListViewController implements Initializable {
     @FXML
     private TableView<EditDataRequest> table;
     @FXML
-    private TableColumn<EditDataRequest, String> requestIDColumn;
+    private TableColumn<EditDataRequest, Integer> requestIDColumn;
     @FXML
     private TableColumn<EditDataRequest, String> employeeNameColumn;
     @FXML
@@ -45,7 +45,7 @@ public class EditRequestListViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         requestList = EditDataRequest.getEditRequestList();
-        requestIDColumn.setCellValueFactory(new PropertyValueFactory<EditDataRequest, String>("requestID"));
+        requestIDColumn.setCellValueFactory(new PropertyValueFactory<EditDataRequest, Integer>("requestID"));
         employeeNameColumn.setCellValueFactory(new PropertyValueFactory<EditDataRequest, String>("employeeName"));
         employeeIDColumn.setCellValueFactory(new PropertyValueFactory<EditDataRequest, String>("employeeID"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<EditDataRequest, String>("status"));
@@ -65,13 +65,25 @@ public class EditRequestListViewController implements Initializable {
 
     public void rejectEditDataRequest(ActionEvent e) {
         EditDataRequest selected = table.getSelectionModel().getSelectedItem();
-        requestList.get(selected.getRequestID() - 1).setStatus("rejected");
+//        requestList.get(selected.getRequestID() - 1).setStatus("rejected");
+        for (EditDataRequest p : requestList){
+            if (p.getEmployeeID() == selected.getEmployeeID()) {
+                selected.setStatus("rejected");
+                break;
+            }
+        }
         table.refresh();
     }
 
     public void approveEditDataRequest(ActionEvent e) {
         EditDataRequest selected = table.getSelectionModel().getSelectedItem();
-        requestList.get(selected.getRequestID() - 1).setStatus("approved");
+//        requestList.get(selected.getRequestID() - 1).setStatus("approved");
+        for (EditDataRequest p : requestList){
+            if (p.getEmployeeID() == selected.getEmployeeID()) {
+                selected.setStatus("approved");
+                break;
+            }
+        }
         table.refresh();
     }
 

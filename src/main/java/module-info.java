@@ -4,6 +4,7 @@ module hust.workattendanceapp {
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires com.google.gson;
 
     opens hust.workattendanceapp to javafx.fxml;
     exports hust.workattendanceapp;

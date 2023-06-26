@@ -41,7 +41,13 @@ public class PersonalAttendanceController {
         LocalDate myDate = myDatePickerTo.getValue();
         //myLabel.setText(myDate.toString());
     }
-
+    public void switchToHomepage(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.WORKER_HOMEPAGE_VIEW_FXML));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     public void logOut(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.LOGIN_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

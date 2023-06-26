@@ -78,12 +78,21 @@ public class EditCheckinDetailDataFormController implements Initializable {
         oldCheckoutTimeField.setText(oldCheckoutTime);
     }
 
-    public void confirmEdit() {
+    public void confirmEdit(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Save to Checkin log !");
         String s = "Save to checkin log successfully !";
         alert.setContentText(s);
         alert.showAndWait();
+        switchToEditRequestListView(event);
+    }
+
+    public void switchToEditRequestListView(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_REQUEST_LIST_VIEW_FXML));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void cancelEdit(ActionEvent event) throws IOException {

@@ -12,6 +12,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class WorkerHomepageViewController {
+
+    public void init(String employeeID) {
+
+    }
     private Stage stage;
     private Scene scene;
     private Parent root;

@@ -40,12 +40,12 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button defaultButton="true" layoutX="1097.0" layoutY="697.0" mnemonicParsing="false" onAction="#confirmEdit" stylesheets="@../styles/confirm-button.css" text="Confirm">
+      <Button defaultButton="true" layoutX="1097.0" layoutY="697.0" mnemonicParsing="false" onAction="#confirmEdit" stylesheets="@../../styles/confirm-button.css" text="Confirm">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button cancelButton="true" layoutX="958.0" layoutY="698.0" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="45.0" prefWidth="118.0" stylesheets="@../styles/cancel-button-style.css" text="Cancel" textFill="WHITE">
+      <Button cancelButton="true" layoutX="958.0" layoutY="698.0" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="45.0" prefWidth="118.0" stylesheets="@../../styles/cancel-button-style.css" text="Cancel" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>

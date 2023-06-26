@@ -40,7 +40,6 @@ public class LoginController {
 
     public void handleLogin(ActionEvent event) throws IOException {
         String username = usernameInput.getText();
-        System.out.println(manager);
         if (manager.contains(username)) {
             switchToManager(event, username);
         } else if (worker.contains(username)) {

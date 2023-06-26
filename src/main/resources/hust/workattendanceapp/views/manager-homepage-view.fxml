@@ -51,7 +51,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Label layoutX="393.0" layoutY="267.0" text="20205004">
+      <Label fx:id="employeeIDLabel" layoutX="393.0" layoutY="267.0" text="20205004">
          <font>
             <Font size="24.0" />
          </font>

@@ -3,6 +3,7 @@ package hust.workattendanceapp.controller.manager;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
+import hust.workattendanceapp.controller.officer.ManagerHomepageViewController;
 import hust.workattendanceapp.model.EditDataRequest;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -67,7 +68,7 @@ public class EditRequestListViewController implements Initializable {
     public void rejectEditDataRequest(ActionEvent e) {
         EditDataRequest selected = table.getSelectionModel().getSelectedItem();
 //        requestList.get(selected.getRequestID() - 1).setStatus("rejected");
-        for (EditDataRequest p : requestList){
+        for (EditDataRequest p : requestList) {
             if (Objects.equals(p.getEmployeeID(), selected.getEmployeeID())) {
                 selected.setStatus("rejected");
                 break;
@@ -79,7 +80,7 @@ public class EditRequestListViewController implements Initializable {
     public void approveEditDataRequest(ActionEvent e) {
         EditDataRequest selected = table.getSelectionModel().getSelectedItem();
 //        requestList.get(selected.getRequestID() - 1).setStatus("approved");
-        for (EditDataRequest p : requestList){
+        for (EditDataRequest p : requestList) {
             if (Objects.equals(p.getEmployeeID(), selected.getEmployeeID())) {
                 selected.setStatus("approved");
                 break;
@@ -138,13 +139,26 @@ public class EditRequestListViewController implements Initializable {
             alert.showAndWait();
             return;
         }
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        root = fxmlLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_CHECKIN_DETAIL_VIEW_FXML).openStream());
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        EditCheckinDetailDataFormController controller = fxmlLoader.getController();
-        controller.createNewEditForm(selected);
-        stage.show();
+//        FXMLLoader fxmlLoader = new FXMLLoader();
+//        root = fxmlLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_CHECKIN_DETAIL_VIEW_FXML).openStream());
+//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        EditCheckinDetailDataFormController controller = fxmlLoader.getController();
+//        controller.createNewEditForm(selected);
+//        stage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_CHECKIN_DETAIL_VIEW_FXML));
+            Parent root = (Parent) loader.load();
+            EditCheckinDetailDataFormController controller = loader.getController();
+            controller.createNewEditForm(selected);
+
+            Scene newScene = new Scene(root);
+            Stage newStage = new Stage();
+            newStage.setScene(newScene);
+            newStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

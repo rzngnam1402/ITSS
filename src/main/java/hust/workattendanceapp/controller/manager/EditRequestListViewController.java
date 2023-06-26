@@ -129,7 +129,7 @@ public class EditRequestListViewController implements Initializable {
         stage.show();
     }
 
-    public void handleRequest(ActionEvent event) throws IOException {
+    public void handleRequest(ActionEvent event){
         EditDataRequest selected = table.getSelectionModel().getSelectedItem();
         if (selected == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -139,24 +139,17 @@ public class EditRequestListViewController implements Initializable {
             alert.showAndWait();
             return;
         }
-//        FXMLLoader fxmlLoader = new FXMLLoader();
-//        root = fxmlLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_CHECKIN_DETAIL_VIEW_FXML).openStream());
-//        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        EditCheckinDetailDataFormController controller = fxmlLoader.getController();
-//        controller.createNewEditForm(selected);
-//        stage.show();
         try {
             FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_CHECKIN_DETAIL_VIEW_FXML));
             Parent root = (Parent) loader.load();
             EditCheckinDetailDataFormController controller = loader.getController();
             controller.createNewEditForm(selected);
 
-            Scene newScene = new Scene(root);
-            Stage newStage = new Stage();
-            newStage.setScene(newScene);
-            newStage.show();
+            Scene scene = new Scene(root);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(scene);
+            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

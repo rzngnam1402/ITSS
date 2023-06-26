@@ -8,6 +8,7 @@ import hust.workattendanceapp.controller.worker.WorkerHomepageViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -61,7 +62,7 @@ public class LoginController {
             controller.init(employeeID);
 
             scene = new Scene(root);
-            stage = new Stage();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
@@ -77,7 +78,7 @@ public class LoginController {
             controller.init(employeeID);
 
             scene = new Scene(root);
-            stage = new Stage();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

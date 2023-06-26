@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -67,7 +68,7 @@ public class EditRequestListViewController implements Initializable {
         EditDataRequest selected = table.getSelectionModel().getSelectedItem();
 //        requestList.get(selected.getRequestID() - 1).setStatus("rejected");
         for (EditDataRequest p : requestList){
-            if (p.getEmployeeID() == selected.getEmployeeID()) {
+            if (Objects.equals(p.getEmployeeID(), selected.getEmployeeID())) {
                 selected.setStatus("rejected");
                 break;
             }
@@ -79,7 +80,7 @@ public class EditRequestListViewController implements Initializable {
         EditDataRequest selected = table.getSelectionModel().getSelectedItem();
 //        requestList.get(selected.getRequestID() - 1).setStatus("approved");
         for (EditDataRequest p : requestList){
-            if (p.getEmployeeID() == selected.getEmployeeID()) {
+            if (Objects.equals(p.getEmployeeID(), selected.getEmployeeID())) {
                 selected.setStatus("approved");
                 break;
             }
@@ -105,6 +106,14 @@ public class EditRequestListViewController implements Initializable {
 
     public void switchToImportDataView(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.IMPORT_DATA_BY_EXCEL_VIEW_FXML));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToOverallAttendance(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.OFFICER_OVERALL_ATTENDANCE_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

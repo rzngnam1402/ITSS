@@ -23,7 +23,13 @@ public class ManagerHomepageViewController {
         stage.setScene(scene);
         stage.show();
     }
-
+    public void switchToOverallAttendance(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.OFFICER_OVERALL_ATTENDANCE_VIEW_FXML));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     public void logOut(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.LOGIN_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

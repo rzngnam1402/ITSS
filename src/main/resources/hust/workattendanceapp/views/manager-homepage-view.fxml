@@ -106,7 +106,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="-4.0" layoutY="233.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="221.0" text="Overall Attendance">
+      <Button layoutX="-4.0" layoutY="233.0" mnemonicParsing="false" onAction="#switchToOverallAttendance" prefHeight="52.0" prefWidth="221.0" text="Overall Attendance">
          <font>
             <Font size="18.0" />
          </font>

@@ -10,4 +10,5 @@ public class FXMLConstraints {
     public static String IMPORT_DATA_BY_EXCEL_VIEW_FXML = "views/import-data-excel-view.fxml";
     public static String OFFICER_OVERALL_ATTENDANCE_VIEW_FXML = "views/officer-overall-attendance-view.fxml";
     public static String PERSONAL_ATTENDANCE = "views/personal-attendance.fxml";
+    public static String EDIT_DATA_REQUEST_FORM_POP_UP = "views/edit-data-request-form-pop-up.fxml";
 }

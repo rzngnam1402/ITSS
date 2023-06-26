@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.workattendanceapp.controller.worker.PersonalAttendanceController">
    <children>
       <Text layoutX="280.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Officer ID">
          <font>
@@ -59,7 +59,7 @@
             <TableColumn prefWidth="183.35400390625" text="Sum" />
          </columns>
       </TableView>
-      <Button layoutX="837.0" layoutY="245.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="105.0" text="Send Request" />
+      <Button fx:id="editDataRequestFormPopUp" layoutX="837.0" layoutY="245.0" mnemonicParsing="false" onAction="#editDataRequestFormPopUp" prefHeight="42.0" prefWidth="105.0" text="Send Request" />
       <AnchorPane prefHeight="804.0" prefWidth="218.0" style="-fx-background-color: #545a5a;">
          <children>
             <Text fill="WHITE" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WORK ATTENDANCE APPLICATION" textAlignment="CENTER" wrappingWidth="215.24867248535156">

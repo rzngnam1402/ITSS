@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="editDataRequestFormPopUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.workattendanceapp.controller.worker.EditDataRequestFormPopUpController">
    <children>
-      <Button layoutX="430.0" layoutY="429.0" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="26.0" prefWidth="92.0" stylesheets="@../styles/cancel-button-style.css" text="Cancel" textFill="WHITE">
+      <Button layoutX="430.0" layoutY="429.0" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="26.0" prefWidth="92.0" stylesheets="@../../styles/cancel-button-style.css" text="Cancel" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

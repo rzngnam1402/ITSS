@@ -29,7 +29,7 @@
                   <Font size="26.0" />
                </font>
             </Text>
-            <Button layoutX="32.0" layoutY="727.0" mnemonicParsing="false" onAction="#logOut" prefHeight="52.0" prefWidth="150.0" style="-fx-border-radius: 15px;" stylesheets="@../styles/cancel-button-style.css" text="Logout" textFill="WHITE">
+            <Button layoutX="32.0" layoutY="727.0" mnemonicParsing="false" onAction="#logOut" prefHeight="52.0" prefWidth="150.0" style="-fx-border-radius: 15px;" stylesheets="@../../styles/cancel-button-style.css" text="Logout" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -88,7 +88,7 @@
       </Label>
       <ImageView fitHeight="413.0" fitWidth="267.0" layoutX="906.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../styles/Mona_Lisa-restored.jpg" />
+            <Image url="@../../styles/Mona_Lisa-restored.jpg" />
          </image>
       </ImageView>
       <Button layoutX="-4.0" layoutY="176.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="221.0" style="-fx-background-color: ffffff;" text="Homepage">

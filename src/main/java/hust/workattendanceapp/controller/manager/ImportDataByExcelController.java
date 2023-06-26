@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,7 +38,8 @@ public class ImportDataByExcelController implements Initializable {
     private TableColumn<DataToImport, String> CheckinColumn;
     @FXML
     private TableColumn<DataToImport, String> CheckoutColumn;
-
+    @FXML
+    private TableColumn<DataToImport, CheckBox> SelectColumn;
     ObservableList<DataToImport> ImportList;
 
     @Override
@@ -47,6 +49,7 @@ public class ImportDataByExcelController implements Initializable {
         NameColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("Name"));
         CheckinColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("Checkin"));
         CheckoutColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("Checkout"));
+        SelectColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, CheckBox>("Select"));
         table.setItems(ImportList);
     }
     public void switchToHomepage(ActionEvent event) throws IOException {

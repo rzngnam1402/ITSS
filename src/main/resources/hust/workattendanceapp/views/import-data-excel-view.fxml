@@ -8,6 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+
 <AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.workattendanceapp.controller.manager.ImportDataByExcelController">
    <children>
       <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="804.0" prefWidth="218.0" style="-fx-background-color: #545a5a;">
@@ -65,7 +66,7 @@
           <TableColumn fx:id="NameColumn" prefWidth="245.66668701171875" text="Name" />
             <TableColumn fx:id="CheckinColumn" prefWidth="183.5" text="Checkin" />
             <TableColumn fx:id="CheckoutColumn" prefWidth="176.66668701171875" text="Checkout" />
-            <TableColumn prefWidth="104.3333740234375" text="Select" />
+            <TableColumn fx:id="SelectColumn" prefWidth="104.3333740234375" text="Select" />
         </columns>
       </TableView>
       <CheckBox layoutX="897.0" layoutY="723.0" mnemonicParsing="false" text="Select all">

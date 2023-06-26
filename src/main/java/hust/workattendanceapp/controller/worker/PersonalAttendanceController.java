@@ -54,13 +54,11 @@ public class PersonalAttendanceController {
         try {
             FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_DATA_REQUEST_FORM_POP_UP));
             Parent root = (Parent) loader.load();
-            EditDataRequestFormPopUpController controller = loader.getController();
-//            controller.createNewEditForm(selected);
+            Scene scene = new Scene(root);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            Scene newScene = new Scene(root);
-            Stage newStage = new Stage();
-            newStage.setScene(newScene);
-            newStage.show();
+            stage.setScene(scene);
+            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

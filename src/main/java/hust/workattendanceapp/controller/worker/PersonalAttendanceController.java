@@ -10,17 +10,37 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class PersonalAttendanceController {
     private Stage stage;
     private Scene scene;
     private Parent root;
 
+    @FXML
+    private Label myLabel;
 
+    @FXML
+    private DatePicker myDatePickerFrom;
+
+    public void getFromDate(ActionEvent event) {
+        LocalDate myDate = myDatePickerFrom.getValue();
+        //myLabel.setText(myDate.toString());
+    }
+
+    @FXML
+    private DatePicker myDatePickerTo;
+
+    public void getToDate(ActionEvent event) {
+        LocalDate myDate = myDatePickerTo.getValue();
+        //myLabel.setText(myDate.toString());
+    }
 
     public void logOut(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.LOGIN_VIEW_FXML));

@@ -56,7 +56,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button defaultButton="true" layoutX="1120.0" layoutY="719.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="141.0" text="Choose Unit">
+      <Button defaultButton="true" layoutX="1120.0" layoutY="719.0" mnemonicParsing="false" onAction="#handleChooseUnit" prefHeight="54.0" prefWidth="141.0" text="Choose Unit">
          <font>
             <Font size="18.0" />
          </font>

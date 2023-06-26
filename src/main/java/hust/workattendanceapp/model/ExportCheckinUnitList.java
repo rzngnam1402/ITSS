@@ -3,6 +3,12 @@ package hust.workattendanceapp.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ExportCheckinUnitList {
     public ExportCheckinUnitList(int sTT, String unitName, int numOfEmployees, String unitManager) {
         this.sTT = sTT;
@@ -47,16 +53,16 @@ public class ExportCheckinUnitList {
     public static ObservableList getUnitList() {
         ObservableList<ExportCheckinUnitList> exportCheckinUnitList = FXCollections.observableArrayList();
         // get data from json file
-        exportCheckinUnitList.add(new ExportCheckinUnitList(1, "Le Giang Nam",
-                20205004, "male"));
-        exportCheckinUnitList.add(new ExportCheckinUnitList(2, "Do Khanh Ly",
-                202050377, "female"));
-        exportCheckinUnitList.add(new ExportCheckinUnitList(3, "Do Chi Thanh",
-                20205025, "male"));
-        exportCheckinUnitList.add(new ExportCheckinUnitList(4, "Bui Minh Dung",
-                20205025, "male"));
-        exportCheckinUnitList.add(new ExportCheckinUnitList(5, "Nguyen Ngoc Tu",
-                20205025, "female"));
+        exportCheckinUnitList.add(new ExportCheckinUnitList(1, "Intro to AI",
+                12, "Do Chi Thanh"));
+        exportCheckinUnitList.add(new ExportCheckinUnitList(2, "UX UI",
+                43, "Le Giang Nam"));
+        exportCheckinUnitList.add(new ExportCheckinUnitList(3, "ITSS",
+                12, "Chi Thanh Do"));
+        exportCheckinUnitList.add(new ExportCheckinUnitList(4, "Lich su Dang",
+                34, "Dung Minh Bui"));
+        exportCheckinUnitList.add(new ExportCheckinUnitList(5, "Project 1",
+                76, "Adudu"));
         return exportCheckinUnitList;
     }
 }

@@ -1,5 +1,4 @@
 package hust.workattendanceapp.controller.officer;
-
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
 import javafx.event.ActionEvent;
@@ -12,12 +11,10 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
 public class ManagerHomepageViewController {
-    private Stage stage;
     private Scene scene;
     private Parent root;
-
+    private Stage stage;
     @FXML
     private Label employeeIDLabel;
 
@@ -46,7 +43,6 @@ public class ManagerHomepageViewController {
         stage.setScene(scene);
         stage.show();
     }
-
     public void switchToExportCheckinListUnit(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EXPORT_CHECKIN_LIST_UNIT_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -54,7 +50,6 @@ public class ManagerHomepageViewController {
         stage.setScene(scene);
         stage.show();
     }
-
     public void switchToImportDataView(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.IMPORT_DATA_BY_EXCEL_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

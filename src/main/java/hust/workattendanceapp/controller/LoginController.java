@@ -3,10 +3,11 @@ package hust.workattendanceapp.controller;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
+import hust.workattendanceapp.controller.officer.ManagerHomepageViewController;
+import hust.workattendanceapp.controller.worker.WorkerHomepageViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class LoginController {
     private Stage stage;
@@ -21,21 +23,27 @@ public class LoginController {
     private Parent root;
     @FXML
     private TextField usernameInput;
+    private final ArrayList<String> manager = new ArrayList<String>() {
+        {
+            add("20205004");
+            add("20205025");
+            add("20200377");
+        }
+    };
+    private final ArrayList<String> worker = new ArrayList<String>() {
+        {
+            add("20205135");
+            add("20205070");
+        }
+    };
 
     public void handleLogin(ActionEvent event) throws IOException {
         String username = usernameInput.getText();
-        if (username.equals("worker")) {
-            root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.WORKER_HOMEPAGE_VIEW_FXML));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } else if (username.equals("manager")) {
-            root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.MANAGER_HOMEPAGE_VIEW_FXML));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+        System.out.println(manager);
+        if (manager.contains(username)) {
+            switchToManager(event, username);
+        } else if (worker.contains(username)) {
+            switchToWorker(event, username);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Something wrong !");
@@ -45,4 +53,35 @@ public class LoginController {
         }
     }
 
+    public void switchToWorker(ActionEvent event, String employeeID) {
+        try {
+            FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.WORKER_HOMEPAGE_VIEW_FXML));
+            Parent root = (Parent) loader.load();
+            WorkerHomepageViewController controller = loader.getController();
+            controller.init(employeeID);
+
+            scene = new Scene(root);
+            stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void switchToManager(ActionEvent event, String employeeID) {
+        try {
+            FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.MANAGER_HOMEPAGE_VIEW_FXML));
+            Parent root = (Parent) loader.load();
+            ManagerHomepageViewController controller = loader.getController();
+            controller.init(employeeID);
+
+            scene = new Scene(root);
+            stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

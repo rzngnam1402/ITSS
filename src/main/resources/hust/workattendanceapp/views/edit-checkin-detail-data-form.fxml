@@ -30,7 +30,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextArea editable="false" layoutX="200.0" layoutY="501.0" prefHeight="239.0" prefWidth="674.0">
+      <TextArea fx:id="descriptionField" editable="false" layoutX="200.0" layoutY="501.0" prefHeight="239.0" prefWidth="674.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -40,12 +40,12 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button defaultButton="true" layoutX="1097.0" layoutY="697.0" mnemonicParsing="false" onAction="#confirmEdit" text="Confirm">
+      <Button defaultButton="true" layoutX="1097.0" layoutY="697.0" mnemonicParsing="false" onAction="#confirmEdit" stylesheets="@../styles/confirm-button.css" text="Confirm">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="958.0" layoutY="698.0" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="45.0" prefWidth="118.0" stylesheets="@../styles/cancel-button-style.css" text="Cancel" textFill="WHITE">
+      <Button cancelButton="true" layoutX="958.0" layoutY="698.0" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="45.0" prefWidth="118.0" style="-fx-background-color: #EB3148;" text="Cancel" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
@@ -55,7 +55,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField editable="false" layoutX="462.0" layoutY="229.0" prefHeight="27.0" prefWidth="118.0">
+      <TextField fx:id="oldCheckinTimeField" editable="false" layoutX="462.0" layoutY="229.0" prefHeight="27.0" prefWidth="118.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -65,7 +65,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="462.0" layoutY="283.0" prefHeight="27.0" prefWidth="118.0">
+      <TextField fx:id="newCheckinTimeField" layoutX="462.0" layoutY="283.0" prefHeight="27.0" prefWidth="118.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -80,12 +80,12 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField editable="false" layoutX="462.0" layoutY="339.0" prefHeight="27.0" prefWidth="118.0">
+      <TextField fx:id="oldCheckoutTimeField" editable="false" layoutX="462.0" layoutY="339.0" prefHeight="27.0" prefWidth="118.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="462.0" layoutY="393.0" prefHeight="27.0" prefWidth="118.0">
+      <TextField fx:id="newCheckoutTimeField" layoutX="462.0" layoutY="393.0" prefHeight="27.0" prefWidth="118.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -95,22 +95,22 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Label layoutX="301.0" layoutY="126.0" text="Le Giang Nam">
+      <Label fx:id="nameLabel" layoutX="301.0" layoutY="126.0" text="Le Giang Nam">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="299.0" layoutY="166.0" text="20205004">
+      <Label fx:id="IDLabel" layoutX="299.0" layoutY="166.0" text="20205004">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="919.0" layoutY="167.0" text="Pending">
+      <Label fx:id="statusLabel" layoutX="919.0" layoutY="167.0" text="Pending">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="919.0" layoutY="125.0" text="23-06-2023">
+      <Label fx:id="dateLabel" layoutX="919.0" layoutY="125.0" text="23-06-2023">
          <font>
             <Font size="24.0" />
          </font>

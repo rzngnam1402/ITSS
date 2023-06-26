@@ -31,7 +31,7 @@ public class EditRequestListViewController implements Initializable {
     @FXML
     private TableView<EditDataRequest> table;
     @FXML
-    private TableColumn<EditDataRequest, Integer> requestIDColumn;
+    private TableColumn<EditDataRequest, String> requestIDColumn;
     @FXML
     private TableColumn<EditDataRequest, String> employeeNameColumn;
     @FXML
@@ -45,7 +45,7 @@ public class EditRequestListViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         requestList = EditDataRequest.getEditRequestList();
-        requestIDColumn.setCellValueFactory(new PropertyValueFactory<EditDataRequest, Integer>("requestID"));
+        requestIDColumn.setCellValueFactory(new PropertyValueFactory<EditDataRequest, String>("requestID"));
         employeeNameColumn.setCellValueFactory(new PropertyValueFactory<EditDataRequest, String>("employeeName"));
         employeeIDColumn.setCellValueFactory(new PropertyValueFactory<EditDataRequest, String>("employeeID"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<EditDataRequest, String>("status"));
@@ -91,11 +91,39 @@ public class EditRequestListViewController implements Initializable {
         stage.show();
     }
 
+    public void switchToImportDataView(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.IMPORT_DATA_BY_EXCEL_VIEW_FXML));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void logOut(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.LOGIN_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.show();
+    }
+
+    public void handleRequest(ActionEvent event) throws IOException {
+        EditDataRequest selected = table.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Choose new request error!");
+            String s = "Please choose one request !";
+            alert.setContentText(s);
+            alert.showAndWait();
+            return;
+        }
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        root = fxmlLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_CHECKIN_DETAIL_VIEW_FXML).openStream());
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        EditCheckinDetailDataFormController controller = fxmlLoader.getController();
+        controller.createNewEditForm(selected);
         stage.show();
     }
 }

@@ -24,24 +24,24 @@
             <columns>
                 <TableColumn fx:id="requestIDColumn" prefWidth="108.73880004882812" text="Request ID" />
                 <TableColumn fx:id="employeeIDColumn" prefWidth="110.5792236328125" text="Employee ID" />
-                <TableColumn fx:id="employeeNameColumn" prefWidth="236.23880004882812" text="Employee Name" />
-                <TableColumn fx:id="dateColumn" prefWidth="199.3619384765625" text="Date" />
-                <TableColumn fx:id="statusColumn" prefWidth="156.4486083984375" text="Status" />
+                <TableColumn fx:id="employeeNameColumn" prefWidth="216.57107543945312" text="Employee Name" />
+                <TableColumn fx:id="dateColumn" prefWidth="177.98541259765625" text="Date" />
+                <TableColumn fx:id="statusColumn" prefWidth="155.0" text="Status" />
             </columns>
         </TableView>
-        <Button layoutX="1066.0" layoutY="682.0" mnemonicParsing="false" onAction="#deleteEditDataRequest" prefHeight="26.0" prefWidth="92.0" text="Delete">
+        <Button layoutX="1060.0" layoutY="682.0" mnemonicParsing="false" onAction="#handleRequest" prefHeight="36.0" prefWidth="98.0" text="See details">
          <font>
-            <Font size="18.0" />
+            <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="1067.0" layoutY="737.0" mnemonicParsing="false" onAction="#rejectEditDataRequest" prefHeight="26.0" prefWidth="92.0" stylesheets="@../styles/cancel-button-style.css" text="Reject" textFill="WHITE">
+      <Button layoutX="1060.0" layoutY="737.0" mnemonicParsing="false" onAction="#rejectEditDataRequest" prefHeight="36.0" prefWidth="98.0" stylesheets="@../styles/cancel-button-style.css" text="Reject" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font size="16.0" />
          </font>
       </Button>
-      <Button defaultButton="true" layoutX="1171.0" layoutY="738.0" mnemonicParsing="false" onAction="#approveEditDataRequest" prefHeight="26.0" prefWidth="92.0" text="Approve">
+      <Button defaultButton="true" layoutX="1171.0" layoutY="738.0" mnemonicParsing="false" onAction="#approveEditDataRequest" prefHeight="36.0" prefWidth="98.0" stylesheets="@../styles/confirm-button.css" text="Approve">
          <font>
-            <Font size="18.0" />
+            <Font size="16.0" />
          </font>
       </Button>
       <Label layoutX="505.0" layoutY="108.0" text="Le Giang Nam">
@@ -91,7 +91,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="-2.0" layoutY="337.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="220.0" text="Import Checkin Data">
+            <Button layoutX="-2.0" layoutY="337.0" mnemonicParsing="false" onAction="#switchToImportDataView" prefHeight="52.0" prefWidth="220.0" text="Import Checkin Data">
                <font>
                   <Font size="18.0" />
                </font>
@@ -103,5 +103,10 @@
             </Button>
          </children>
       </AnchorPane>
+      <Button layoutX="1172.0" layoutY="682.0" mnemonicParsing="false" onAction="#deleteEditDataRequest" prefHeight="36.0" prefWidth="98.0" text="Delete">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

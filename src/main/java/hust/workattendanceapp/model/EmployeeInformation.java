@@ -1,7 +1,13 @@
 package hust.workattendanceapp.model;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.io.FileReader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class EmployeeInformation {
     public EmployeeInformation(String name, String id, String sex, String email,
@@ -34,22 +40,19 @@ public class EmployeeInformation {
     }
 
     public static ObservableList getEmployeeData() {
-        ObservableList<EmployeeInformation> employeeList = FXCollections.observableArrayList();
-        employeeList.add(new EmployeeInformation("Le Giang Nam", "20205004",
-                "male", "nam.lg205004@sis.hust.edu.vn", "0966244758",
-                "Manager", "Officer","src/main/resources/hust/workattendanceapp/styles/nam.jpg"));
-        employeeList.add(new EmployeeInformation("Do Chi Thanh", "20205025",
-                "male", "thanh.dc205025@sis.hust.edu.vn", "0987123456",
-                "Manager", "Officer", "src/main/resources/hust/workattendanceapp/styles/thanh.jpg"));
-        employeeList.add(new EmployeeInformation("Do Khanh Ly", "20200377",
-                "female", "ly.dk200377@sis.hust.edu.vn", "0988666777",
-                "Manager", "Officer","src/main/resources/hust/workattendanceapp/styles/ly.jpg"));
-        employeeList.add(new EmployeeInformation("Bui Minh Dung", "20205070",
-                "male", "dung.bm205070@sis.hust.edu.vn", "0987123456",
-                "Worker", "Worker","src/main/resources/hust/workattendanceapp/styles/dung.jpg"));
-        employeeList.add(new EmployeeInformation("Nguyen Ngoc Tu", "20205135",
-                "female", "tu.nn205135@sis.hust.edu.vn", "0987123456",
-                "Worker", "Worker","src/main/resources/hust/workattendanceapp/styles/tu.jpg"));
+        ObservableList<EmployeeInformation> employeeList = null;
+        Gson gson = new Gson();
+        try {
+            ArrayList<EmployeeInformation> alist;
+            FileReader reader = new FileReader("src/main/java/hust/workattendanceapp/data/EmployeeInformation.json");
+            Type type = new TypeToken<ArrayList<EmployeeInformation>>() {
+            }.getType();
+            alist = gson.fromJson(reader, type);
+            employeeList = FXCollections.observableArrayList(alist);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return employeeList;
     }
 

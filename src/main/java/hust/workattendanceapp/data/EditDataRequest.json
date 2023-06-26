@@ -1,0 +1,67 @@
+[
+  {
+    "requestID": 5,
+    "employeeID": "20205004",
+    "employeeName": "Le Giang Nam",
+    "employeeSex": "male",
+    "date": "22-06-2023",
+    "status": "pending",
+    "oldCheckinTime": "12:05",
+    "newCheckinTime": "12:00",
+    "oldCheckoutTime": "17:38",
+    "newCheckoutTime": "17:40",
+    "description": "I want to change my checkin time because I checked in  the wrong time."
+  },
+  {
+    "requestID": 4,
+    "employeeID": "20200377",
+    "employeeName": "Do Khanh Ly",
+    "employeeSex": "female",
+    "date": "21-06-2023",
+    "status": "pending",
+    "oldCheckinTime": "13:05",
+    "newCheckinTime": "13:00",
+    "oldCheckoutTime": "17:00",
+    "newCheckoutTime": "17:00",
+    "description": "I was late to work for 5 minutes. Please edit my attendance time. Thank you for understanding"
+  },
+  {
+    "requestID": 3,
+    "employeeID": "20205025",
+    "employeeName": "Do Chi Thanh",
+    "employeeSex": "male",
+    "date": "20-06-2023",
+    "status": "rejected",
+    "oldCheckinTime": "14:00",
+    "newCheckinTime": "13:00",
+    "oldCheckoutTime": "17:00",
+    "newCheckoutTime": "17:00",
+    "description": "Sorry for the inconvenience caused by me, i checked in the wrong time"
+  },
+  {
+    "requestID": 2,
+    "employeeID": "20205070",
+    "employeeName": "Bui Minh Dung",
+    "employeeSex": "male",
+    "date": "19-06-2023",
+    "status": "approved",
+    "oldCheckinTime": "13:05",
+    "newCheckinTime": "13:05",
+    "oldCheckoutTime": "18:00",
+    "newCheckoutTime": "18:30",
+    "description": "I checked out early for 30 minutes. Please change my checkout time. Thank you !"
+  },
+  {
+    "requestID": 1,
+    "employeeID": "20205135",
+    "employeeName": "Nguyen Ngoc Tu",
+    "employeeSex": "female",
+    "date": "18-06-2023",
+    "status": "approved",
+    "oldCheckinTime": "12:00",
+    "newCheckinTime": "12:00",
+    "oldCheckoutTime": "18:40",
+    "newCheckoutTime": "18:00",
+    "description": "I checked out late for 40 minutes. Please change my checkout time. Thank you !"
+  }
+]

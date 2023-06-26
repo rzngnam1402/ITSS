@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Le Giang Nam",
+    "id": "20205004",
+    "sex": "male",
+    "email": "nam.lg205004@sis.hust.edu.vn",
+    "phone": "0966244758",
+    "role": "Manager",
+    "unit": "Officer",
+    "img": "src/main/resources/hust/workattendanceapp/styles/nam.jpg"
+  },
+  {
+    "name": "Do Chi Thanh",
+    "id": "20205025",
+    "sex": "male",
+    "email": "thanh.dc205025@sis.hust.edu.vn",
+    "phone": "0987123456",
+    "role": "Manager",
+    "unit": "Officer",
+    "img": "src/main/resources/hust/workattendanceapp/styles/thanh.jpg"
+  },
+  {
+    "name": "Do Khanh Ly",
+    "id": "20200377",
+    "sex": "female",
+    "email": "ly.dk200377@sis.hust.edu.vn",
+    "phone": "0988666777",
+    "role": "Manager",
+    "unit": "Officer",
+    "img": "src/main/resources/hust/workattendanceapp/styles/ly.jpg"
+  },
+  {
+    "name": "Bui Minh Dung",
+    "id": "20205070",
+    "sex": "male",
+    "email": "dung.bm205070@sis.hust.edu.vn",
+    "phone": "0987123456",
+    "role": "Worker",
+    "unit": "Worker",
+    "img": "src/main/resources/hust/workattendanceapp/styles/dung.jpg"
+  },
+  {
+    "name": "Nguyen Ngoc Tu",
+    "id": "20205135",
+    "sex": "female",
+    "email": "tu.nn205135@sis.hust.edu.vn",
+    "phone": "0987123456",
+    "role": "Worker",
+    "unit": "Worker",
+    "img": "src/main/resources/hust/workattendanceapp/styles/tu.jpg"
+  }
+]

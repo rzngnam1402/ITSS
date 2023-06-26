@@ -2,21 +2,22 @@ package hust.workattendanceapp.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.CheckBox;
 
 public class DataToImport {
-    public DataToImport(String ID, String Name, String Checkin, String Checkout, boolean select) {
+    public DataToImport(String ID, String Name, String Checkin, String Checkout, CheckBox select) {
         this.ID = ID;
         this.Name = Name;
         this.Checkin = Checkin;
         this.Checkout = Checkout;
-        this.select = select;
+        this.select = new CheckBox();
     }
 
     private String ID;
     private String Name;
     private String Checkin;
     private String Checkout;
-    private boolean select;
+    private CheckBox select;
 
     public String getID() {
         return ID;
@@ -46,15 +47,24 @@ public class DataToImport {
         return Checkout;
     }
 
-    public void setDate(String Checkout) {
+    public void setCheckout(String Checkout) {
         this.Checkout = Checkout;
     }
+
+    public CheckBox getSelect() {
+        return select;
+    }
+
+    public void setSelect(CheckBox Checkout) {
+        this.select = select;
+    }
+
 
     public static ObservableList getImportList() {
         ObservableList<DataToImport> ImportList = FXCollections.observableArrayList();
         // get data from json file
         ImportList.add(new DataToImport("1223", "Le Giang Nam",
-                "20205004", "male", true));
+                "20205004", "male",null));
         return ImportList;
 
     }

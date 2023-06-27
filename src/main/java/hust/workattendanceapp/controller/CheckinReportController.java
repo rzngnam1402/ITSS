@@ -1,2 +1,2 @@
-package hust.workattendanceapp.controller;public class CheckinReportController {
+package hust.workattendanceapp.controller;public class   CheckinReportController {
 }

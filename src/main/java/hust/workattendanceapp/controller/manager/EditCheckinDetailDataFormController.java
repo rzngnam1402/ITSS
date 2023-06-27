@@ -16,10 +16,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.controlsfx.control.ListActionView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 
 public class EditCheckinDetailDataFormController implements Initializable {
@@ -76,6 +77,26 @@ public class EditCheckinDetailDataFormController implements Initializable {
         oldCheckinTimeField.setText(oldCheckinTime);
         newCheckoutTimeField.setText(newCheckoutTime);
         oldCheckoutTimeField.setText(oldCheckoutTime);
+    }
+
+    public void checkDataError(ActionEvent event) {
+        checkTimeField(newCheckinTimeField.getText());
+        checkTimeField(newCheckoutTimeField.getText());
+    }
+
+    public void checkTimeField(String timeToCheck) {
+        System.out.println(timeToCheck);
+        try {
+            LocalTime.parse(timeToCheck);
+            System.out.println("Valid time string: " + timeToCheck);
+        } catch (DateTimeParseException | NullPointerException e) {
+            System.out.println("Invalid time string: " + timeToCheck);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Time Input Error !");
+            String s = "You have typed wrong time format. Please check again!";
+            alert.setContentText(s);
+            alert.showAndWait();
+        }
     }
 
     public void confirmEdit(ActionEvent event) throws IOException {

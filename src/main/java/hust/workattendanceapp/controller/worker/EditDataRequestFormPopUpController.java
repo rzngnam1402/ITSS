@@ -2,10 +2,8 @@ package hust.workattendanceapp.controller.worker;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
-import hust.workattendanceapp.controller.LoginController;
-import hust.workattendanceapp.model.EditDataRequest;
 import hust.workattendanceapp.model.EditDataRequestForm;
-import hust.workattendanceapp.subsystem.subsystemController.crudDemoSystem;
+import hust.workattendanceapp.subsystem.subsystemController.CRUDSystem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,7 +55,7 @@ public class EditDataRequestFormPopUpController {
         editDataRequestForm = createNewEditDataRequest(editDataRequestForm);
         System.out.println(editDataRequestForm);
         try {
-            crudDemoSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/EditDataRequestForm.json",editDataRequestForm);
+            CRUDSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/EditDataRequestForm.json",editDataRequestForm);
         }
         catch (Exception e){
             e.printStackTrace();

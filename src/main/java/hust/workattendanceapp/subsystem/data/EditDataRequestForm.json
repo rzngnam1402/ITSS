@@ -9,5 +9,27 @@
     "oldCheckoutTime": "21:00",
     "newCheckoutTime": "23:00",
     "description": "Overtime"
+  },
+  {
+    "requestID": "de6ebf24-2c19-47b6-b615-f99a93db957c",
+    "employeeID": "20205070",
+    "date": "2023-06-08",
+    "status": "Pending",
+    "oldCheckinTime": "05:00",
+    "newCheckinTime": "06:00",
+    "oldCheckoutTime": "13:00",
+    "newCheckoutTime": "23:00",
+    "description": "Overtime to fix ITSS bug"
+  },
+  {
+    "requestID": "1379cff3-4838-4c47-af7e-d49e8f126557",
+    "employeeID": "20205135",
+    "date": "2023-06-22",
+    "status": "Pending",
+    "oldCheckinTime": "10:00",
+    "newCheckinTime": "11:00",
+    "oldCheckoutTime": "23:00",
+    "newCheckoutTime": "24:00",
+    "description": "Dating"
   }
 ]

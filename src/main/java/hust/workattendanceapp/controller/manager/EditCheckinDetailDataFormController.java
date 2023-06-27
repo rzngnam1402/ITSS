@@ -80,22 +80,31 @@ public class EditCheckinDetailDataFormController implements Initializable {
     }
 
     public void checkDataError(ActionEvent event) {
-        checkTimeField(newCheckinTimeField.getText());
-        checkTimeField(newCheckoutTimeField.getText());
-    }
-
-    public void checkTimeField(String timeToCheck) {
-        System.out.println(timeToCheck);
-        try {
-            LocalTime.parse(timeToCheck);
-            System.out.println("Valid time string: " + timeToCheck);
-        } catch (DateTimeParseException | NullPointerException e) {
-            System.out.println("Invalid time string: " + timeToCheck);
+        if (checkTimeField(newCheckinTimeField.getText()) && checkTimeField(newCheckoutTimeField.getText()))
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Successful");
+            String s = "Set time successfully!";
+            alert.setContentText(s);
+            alert.showAndWait();
+        }
+        else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Time Input Error !");
             String s = "You have typed wrong time format. Please check again!";
             alert.setContentText(s);
             alert.showAndWait();
+        }
+    }
+    public boolean checkTimeField(String timeToCheck) {
+        System.out.println(timeToCheck);
+        try {
+            LocalTime.parse(timeToCheck);
+            System.out.println("Valid time string: " + timeToCheck);
+            return true;
+        } catch (DateTimeParseException | NullPointerException e) {
+            System.out.println("Invalid time string: " + timeToCheck);
+            return false;
         }
     }
 

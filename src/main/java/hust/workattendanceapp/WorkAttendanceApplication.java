@@ -11,6 +11,7 @@ import java.io.IOException;
 public class WorkAttendanceApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.LOGIN_VIEW_FXML));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 800);
         stage.setTitle("WorkAttendanceApplication!");

@@ -19,16 +19,16 @@ public class crudDemoSystem {
         Gson gson = new Gson();
         try {
             FileReader reader = new FileReader(filePath);
-            Type type = new TypeToken<ArrayList<Object>>(){}.getType();
+            Type type = new TypeToken<ArrayList<Object>>() {
+            }.getType();
             list = gson.fromJson(reader, type);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        if(list == null){
+        if (list == null) {
             list = new ArrayList<Object>();
             list.add(data);
-        }
-        else {
+        } else {
             list.add(data);
         }
         Path path = Paths.get(filePath);
@@ -43,34 +43,36 @@ public class crudDemoSystem {
         return "Inserted to json";
     }
 
-    public static ArrayList<Object> getData(String filePath){
+    public static ArrayList<Object> getData(String filePath) {
         ArrayList<Object> list = new ArrayList<>() {
         };
         Gson gson = new Gson();
         try {
             FileReader reader = new FileReader(filePath);
-            Type type = new TypeToken<ArrayList<Object>>(){}.getType();
+            Type type = new TypeToken<ArrayList<Object>>() {
+            }.getType();
             list = gson.fromJson(reader, type);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return list;
     }
+
     public static String insertMany(String filePath, ArrayList<Object> dataset) throws IOException {
         ArrayList<Object> list = null;
         Gson gson = new Gson();
         try {
             FileReader reader = new FileReader(filePath);
-            Type type = new TypeToken<ArrayList<Object>>(){}.getType();
+            Type type = new TypeToken<ArrayList<Object>>() {
+            }.getType();
             list = gson.fromJson(reader, type);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        if(list == null){
+        if (list == null) {
             list = new ArrayList<Object>();
             list.addAll(dataset);
-        }
-        else {
+        } else {
             list.addAll(dataset);
         }
 
@@ -103,9 +105,18 @@ public class crudDemoSystem {
         testing.add(test1);
         testing.add(test2);
         testing.add(test3);
-        crudDemoSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/test.json",test3);
-        crudDemoSystem.insertMany("src/main/java/hust/workattendanceapp/subsystem/data/test.json",testing);
-        System.out.println(crudDemoSystem.getData("src/main/java/hust/workattendanceapp/subsystem/data/test.json"));
 
+        //Add directly to json
+        crudDemoSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/test.json", test3);
+        crudDemoSystem.insertMany("src/main/java/hust/workattendanceapp/subsystem/data/test.json", testing);
+
+
+        //Controller handle
+        ArrayList<Object> data = crudDemoSystem.getData("src/main/java/hust/workattendanceapp/subsystem/data/test.json");
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(data.get(0));
+        EditDataRequest editDataRequest = gson.fromJson(jsonString,EditDataRequest.class);
+        System.out.println(editDataRequest.getEmployeeID());
     }
 }
+

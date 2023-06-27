@@ -3,6 +3,7 @@ package hust.workattendanceapp.subsystem.subsystemController;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import hust.workattendanceapp.model.EditDataRequest;
+import javafx.collections.ObservableList;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -13,7 +14,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 //CRUD with json
-public class crudDemoSystem {
+public class CRUDSystem {
     public static String insertOne(String filePath, Object data) throws IOException {
         ArrayList<Object> list = null;
         Gson gson = new Gson();
@@ -107,16 +108,19 @@ public class crudDemoSystem {
         testing.add(test3);
 
         //Add directly to json
-        crudDemoSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/test.json", test3);
-        crudDemoSystem.insertMany("src/main/java/hust/workattendanceapp/subsystem/data/test.json", testing);
+        CRUDSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/test.json", test3);
+        CRUDSystem.insertMany("src/main/java/hust/workattendanceapp/subsystem/data/test.json", testing);
 
 
         //Controller handle
-        ArrayList<Object> data = crudDemoSystem.getData("src/main/java/hust/workattendanceapp/subsystem/data/test.json");
+        ArrayList<Object> data = CRUDSystem.getData("src/main/java/hust/workattendanceapp/subsystem/data/test.json");
         Gson gson = new Gson();
         String jsonString = gson.toJson(data.get(0));
         EditDataRequest editDataRequest = gson.fromJson(jsonString,EditDataRequest.class);
         System.out.println(editDataRequest.getEmployeeID());
+
+        ObservableList<EditDataRequest> editDataRequestsList = null;
+
     }
 }
 

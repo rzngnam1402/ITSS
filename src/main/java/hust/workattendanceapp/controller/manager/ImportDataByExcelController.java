@@ -71,11 +71,11 @@ public class ImportDataByExcelController implements Initializable {
         if (file != null){
             choosefilenoti.setText("Selected"+file.getAbsolutePath());
 
-//            try {
-//                ImportList= DataToImport.getImportList(file.getAbsolutePath());
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
+            try {
+                ImportList= DataToImport.getImportList(file.getAbsolutePath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

@@ -24,6 +24,7 @@ public class WorkerHomepageViewController {
     private Label employeeIDLabel;
     public void init(String employeeID) {
         WorkerHomepageViewController.employeeID = employeeID;
+        System.out.println(WorkerHomepageViewController.employeeID);
         employeeIDLabel.setText(WorkerHomepageViewController.employeeID);
     }
 

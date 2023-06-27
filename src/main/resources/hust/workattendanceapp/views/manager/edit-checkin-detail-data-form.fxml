@@ -65,7 +65,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="newCheckinTimeField" layoutX="462.0" layoutY="283.0" prefHeight="27.0" prefWidth="118.0">
+      <TextField fx:id="newCheckinTimeField" layoutX="462.0" layoutY="283.0" onAction="#checkDataError" prefHeight="27.0" prefWidth="118.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -85,7 +85,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="newCheckoutTimeField" layoutX="462.0" layoutY="393.0" prefHeight="27.0" prefWidth="118.0">
+      <TextField fx:id="newCheckoutTimeField" layoutX="462.0" layoutY="393.0" onAction="#checkDataError" prefHeight="27.0" prefWidth="118.0">
          <font>
             <Font size="14.0" />
          </font>

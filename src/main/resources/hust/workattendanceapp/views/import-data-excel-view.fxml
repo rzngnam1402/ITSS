@@ -49,7 +49,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Text layoutX="254.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import data from excel file">
+      <Text layoutX="255.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import data from excel file">
          <font>
             <Font size="48.0" />
          </font>
@@ -61,11 +61,12 @@
       </Button>
       <TableView fx:id="table" layoutX="332.0" layoutY="187.0" prefHeight="495.0" prefWidth="843.0">
         <columns>
-          <TableColumn fx:id="IDColumn" prefWidth="132.33331298828125" text="ID" />
-          <TableColumn fx:id="NameColumn" prefWidth="245.66668701171875" text="Name" />
-            <TableColumn fx:id="CheckinColumn" prefWidth="183.5" text="Checkin" />
-            <TableColumn fx:id="CheckoutColumn" prefWidth="176.66668701171875" text="Checkout" />
-            <TableColumn prefWidth="104.3333740234375" text="Select" />
+          <TableColumn fx:id="employeeIDColumn" prefWidth="114.5" text="employeeID" />
+          <TableColumn fx:id="employeeNameColumn" prefWidth="192.0" text="employeeName" />
+            <TableColumn fx:id="dateColumn" prefWidth="114.5" text="Date" />
+            <TableColumn fx:id="checkinTimeColumn" prefWidth="155.0" text="CheckinTime" />
+            <TableColumn fx:id="checkoutTimeColumn" prefWidth="148.5" text="CheckoutTime" />
+            <TableColumn fx:id="selectColumn" prefWidth="117.5" text="Select" />
         </columns>
       </TableView>
       <CheckBox layoutX="897.0" layoutY="723.0" mnemonicParsing="false" text="Select all">

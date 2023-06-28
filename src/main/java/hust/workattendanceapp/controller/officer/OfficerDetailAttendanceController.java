@@ -13,22 +13,22 @@ public class OfficerDetailAttendanceController {
     private TableColumn<?, ?> dateColumn;
 
     @FXML
+    private TableColumn<?, ?> earlyColumn;
+
+    @FXML
     private Pane filter;
 
     @FXML
-    private TableColumn<?, ?> mondayColumn;
+    private TableColumn<?, ?> lateColumn;
+
+    @FXML
+    private TableColumn<?, ?> modernColumn;
 
     @FXML
     private TableView<?> table;
 
     @FXML
-    private TableColumn<?, ?> thursdayColumn;
-
-    @FXML
-    private TableColumn<?, ?> tuesdayColumn;
-
-    @FXML
-    private TableColumn<?, ?> wednesdayColumn;
+    private TableColumn<?, ?> typeColumn;
 
     @FXML
     void backToDetailPage(ActionEvent event) {

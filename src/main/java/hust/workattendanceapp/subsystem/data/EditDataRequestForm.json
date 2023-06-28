@@ -31,5 +31,49 @@
     "oldCheckoutTime": "23:00",
     "newCheckoutTime": "24:00",
     "description": "Dating"
+  },
+  {
+    "requestID": "299108d8-8eb2-4d19-8ef0-8bd129beb53f",
+    "employeeID": "20205070",
+    "date": "2023-06-08",
+    "status": "Pending",
+    "oldCheckinTime": "23:44",
+    "newCheckinTime": "00:00",
+    "oldCheckoutTime": "20:00",
+    "newCheckoutTime": "21:00",
+    "description": ""
+  },
+  {
+    "requestID": "b2aa1995-94cd-414a-83d9-fe52864bd475",
+    "employeeID": "20205070",
+    "date": "2023-06-14",
+    "status": "Pending",
+    "oldCheckinTime": "23:11",
+    "newCheckinTime": "00:11",
+    "oldCheckoutTime": "09:00",
+    "newCheckoutTime": "10:00",
+    "description": "I forgot to check out"
+  },
+  {
+    "requestID": "86979e4c-df88-43d1-b429-15060c08b785",
+    "employeeID": "20205135",
+    "date": "2021-05-12",
+    "status": "Pending",
+    "oldCheckinTime": "10:00",
+    "newCheckinTime": "11:00",
+    "oldCheckoutTime": "23:00",
+    "newCheckoutTime": "00:00",
+    "description": "My clock is wrong"
+  },
+  {
+    "requestID": "944bea09-845a-48ac-9d79-5d9449ce6102",
+    "employeeID": "20205070",
+    "date": "2023-06-14",
+    "status": "Pending",
+    "oldCheckinTime": "08:00",
+    "newCheckinTime": "07:30",
+    "oldCheckoutTime": "23:00",
+    "newCheckoutTime": "00:00",
+    "description": "The system is not working at that time :("
   }
 ]

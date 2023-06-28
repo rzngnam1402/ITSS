@@ -3,6 +3,7 @@ package hust.workattendanceapp.subsystem.subsystemController;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import hust.workattendanceapp.model.EditDataRequest;
+import hust.workattendanceapp.model.EditDataRequestForm;
 import javafx.collections.ObservableList;
 
 import java.io.*;
@@ -44,19 +45,24 @@ public class CRUDSystem {
         return "Inserted to json";
     }
 
-    public static ArrayList<Object> getData(String filePath) {
-        ArrayList<Object> list = new ArrayList<>() {
-        };
+    public static ArrayList<EditDataRequestForm> getData(String filePath, String employeeID) {
+        ArrayList<EditDataRequestForm> list = new ArrayList<>() ;
+        ArrayList<EditDataRequestForm> returnList = new ArrayList<>();
         Gson gson = new Gson();
         try {
             FileReader reader = new FileReader(filePath);
-            Type type = new TypeToken<ArrayList<Object>>() {
+            Type type = new TypeToken<ArrayList<EditDataRequestForm>>() {
             }.getType();
             list = gson.fromJson(reader, type);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return list;
+        for(EditDataRequestForm editDataRequestForm: list){
+            if (editDataRequestForm.getEmployeeID().equals(employeeID)){
+                returnList.add(editDataRequestForm);
+            }
+        }
+        return returnList;
     }
 
     public static String insertMany(String filePath, ArrayList<Object> dataset) throws IOException {
@@ -90,36 +96,7 @@ public class CRUDSystem {
     }
 
     public static void main(String[] args) throws IOException {
-        EditDataRequest test1 = new EditDataRequest(6, "Le Giang Nam",
-                "20205004", "male", "22-06-2023", "pending",
-                "12:05", "12:00", "17:38", "17:40",
-                "I want to change my checkin time because I checked in  the wrong time.");
-        EditDataRequest test2 = new EditDataRequest(7, "Le Giang Nam",
-                "20205004", "male", "22-06-2023", "pending",
-                "12:05", "12:00", "17:38", "17:40",
-                "I want to change my checkin time because I checked in  the wrong time.");
-        EditDataRequest test3 = new EditDataRequest(8, "Le Giang Nam",
-                "20205004", "male", "22-06-2023", "pending",
-                "12:05", "12:00", "17:38", "17:40",
-                "I want to change my checkin time because I checked in  the wrong time.");
-        ArrayList<Object> testing = new ArrayList<Object>();
-        testing.add(test1);
-        testing.add(test2);
-        testing.add(test3);
 
-        //Add directly to json
-        CRUDSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/test.json", test3);
-        CRUDSystem.insertMany("src/main/java/hust/workattendanceapp/subsystem/data/test.json", testing);
-
-
-        //Controller handle
-        ArrayList<Object> data = CRUDSystem.getData("src/main/java/hust/workattendanceapp/subsystem/data/test.json");
-        Gson gson = new Gson();
-        String jsonString = gson.toJson(data.get(0));
-        EditDataRequest editDataRequest = gson.fromJson(jsonString,EditDataRequest.class);
-        System.out.println(editDataRequest.getEmployeeID());
-
-        ObservableList<EditDataRequest> editDataRequestsList = null;
 
     }
 }

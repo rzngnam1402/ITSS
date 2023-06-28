@@ -101,7 +101,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="-3.0" layoutY="290.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="220.0" text="Request Approval">
+      <Button layoutX="-3.0" layoutY="290.0" mnemonicParsing="false" onAction="#switchToRequestApproval" prefHeight="52.0" prefWidth="220.0" text="Request Approval">
          <font>
             <Font size="18.0" />
          </font>

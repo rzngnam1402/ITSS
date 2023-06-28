@@ -2,8 +2,7 @@ package hust.workattendanceapp.controller.manager;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
-import hust.workattendanceapp.model.ExportCheckinDetail;
-import hust.workattendanceapp.model.ExportCheckinUnitList;
+import hust.workattendanceapp.model.ExportCheckinWorker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,33 +18,32 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class ExportCheckinDetailViewController implements Initializable {
+public class ExportCheckinWorkerViewController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
     @FXML
-    private TableView<ExportCheckinDetail> table;
+    private TableView<ExportCheckinWorker> table;
     @FXML
-    private TableColumn<ExportCheckinDetail, Integer> unitNumberDetail;
+    private TableColumn<ExportCheckinWorker, Integer> unitNumberDetail;
     @FXML
-    private TableColumn<ExportCheckinDetail, Integer> workerSTTColumn;
+    private TableColumn<ExportCheckinWorker, Integer> workerSTTColumn;
     @FXML
-    private TableColumn<ExportCheckinDetail, String> workerNameColumn;
+    private TableColumn<ExportCheckinWorker, String> workerNameColumn;
     @FXML
-    private TableColumn<ExportCheckinDetail, Integer> workerNumberColumn;
+    private TableColumn<ExportCheckinWorker, Integer> workerNumberColumn;
     @FXML
-    private TableColumn<ExportCheckinDetail, Integer> workerMonthColumn;
+    private TableColumn<ExportCheckinWorker, Integer> workerMonthColumn;
     @FXML
-    private TableColumn<ExportCheckinDetail, Integer> workerWorkHourColumn;
+    private TableColumn<ExportCheckinWorker, Integer> workerWorkHourColumn;
     @FXML
-    private TableColumn<ExportCheckinDetail, Integer> workerOTHourColumn;
+    private TableColumn<ExportCheckinWorker, Integer> workerOTHourColumn;
     @FXML
-    ObservableList<ExportCheckinDetail> checkinDetails;
-    ObservableList<ExportCheckinDetail> exportCheckinDetails = FXCollections.observableArrayList();
+    ObservableList<ExportCheckinWorker> checkinDetails;
+    ObservableList<ExportCheckinWorker> exportCheckinWorkers = FXCollections.observableArrayList();
     @FXML
     private TextField monthField;
 
@@ -54,13 +52,13 @@ public class ExportCheckinDetailViewController implements Initializable {
     }
 
     public void createNewDetailWorker() {
-        checkinDetails = ExportCheckinDetail.getCheckinDetail();
-        workerSTTColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinDetail, Integer>("workerSTT"));
-        workerNameColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinDetail, String>("workerName"));
-        workerNumberColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinDetail, Integer>("workerNumber"));
-        workerMonthColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinDetail, Integer>("workerMonth"));
-        workerWorkHourColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinDetail, Integer>("workerWorkHour"));
-        workerOTHourColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinDetail, Integer>("workerOTHour"));
+        checkinDetails = ExportCheckinWorker.getCheckinDetail();
+        workerSTTColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, Integer>("workerSTT"));
+        workerNameColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, String>("workerName"));
+        workerNumberColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, Integer>("workerNumber"));
+        workerMonthColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, Integer>("workerMonth"));
+        workerWorkHourColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, Integer>("workerWorkHour"));
+        workerOTHourColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, Integer>("workerOTHour"));
         table.setItems(checkinDetails);
     }
 
@@ -69,13 +67,13 @@ public class ExportCheckinDetailViewController implements Initializable {
         if (month.equals("")) {
             table.setItems(checkinDetails);
         } else if (Integer.parseInt(month) > 0 && Integer.parseInt(month) < 13) {
-            exportCheckinDetails.removeAll(exportCheckinDetails);
-            for (ExportCheckinDetail eachstring : checkinDetails) {
+            exportCheckinWorkers.removeAll(exportCheckinWorkers);
+            for (ExportCheckinWorker eachstring : checkinDetails) {
                 if (eachstring.getWorkerMonth() == Integer.parseInt(month)) {
-                    exportCheckinDetails.add(new ExportCheckinDetail(eachstring.getWorkerSTT(), eachstring.getWorkerName(), eachstring.getWorkerNumber(), eachstring.getWorkerMonth(), eachstring.getWorkerWorkHour(), eachstring.getWorkerOTHour()));
+                    exportCheckinWorkers.add(new ExportCheckinWorker(eachstring.getWorkerSTT(), eachstring.getWorkerName(), eachstring.getWorkerNumber(), eachstring.getWorkerMonth(), eachstring.getWorkerWorkHour(), eachstring.getWorkerOTHour()));
                 }
             }
-            table.setItems(exportCheckinDetails);
+            table.setItems(exportCheckinWorkers);
         } else alertFilterError();
 
     }
@@ -97,7 +95,7 @@ public class ExportCheckinDetailViewController implements Initializable {
     }
 
     public void exportWorker() throws IOException {
-        ExportCheckinDetail.exportWorker(exportCheckinDetails);
+        ExportCheckinWorker.exportWorker(exportCheckinWorkers);
         confirmExport();
     }
 

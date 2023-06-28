@@ -1,13 +1,13 @@
 [
   {
   "sTT": 1,
-  "unitName": "Officer",
+  "unitName": "Worker",
   "numOfEmployees": 12,
   "unitManager": "Do Chi Thanh"
   },
   {
   "sTT": 2,
-  "unitName": "Worker",
+  "unitName": "Officer",
   "numOfEmployees": 10,
   "unitManager": "Andrew"
   }

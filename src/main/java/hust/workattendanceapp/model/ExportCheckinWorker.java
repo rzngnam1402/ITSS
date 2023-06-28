@@ -13,8 +13,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExportCheckinDetail {
-    public ExportCheckinDetail(int workerSTT, String workerName, int workerNumber, int workerMonth, int workerWorkHour, int workerOTHour) {
+public class ExportCheckinWorker {
+    public ExportCheckinWorker(int workerSTT, String workerName, int workerNumber, int workerMonth, int workerWorkHour, int workerOTHour) {
         this.workerSTT = workerSTT;
         this.workerName = workerName;
         this.workerNumber = workerNumber;
@@ -66,23 +66,23 @@ public class ExportCheckinDetail {
         this.workerOTHour = workerOTHour;
     }
     public static ObservableList getCheckinDetail() {
-        ObservableList<ExportCheckinDetail> exportCheckinDetails = FXCollections.observableArrayList();
+        ObservableList<ExportCheckinWorker> exportCheckinWorkers = FXCollections.observableArrayList();
         Gson gson = new Gson();
         try {
-            ArrayList<ExportCheckinDetail> alist;
+            ArrayList<ExportCheckinWorker> alist;
             FileReader reader = new FileReader("src/main/java/hust/workattendanceapp/data/WorkerDetail.json");
-            Type type = new TypeToken<ArrayList<ExportCheckinDetail>>() {
+            Type type = new TypeToken<ArrayList<ExportCheckinWorker>>() {
             }.getType();
             alist = gson.fromJson(reader, type);
-            exportCheckinDetails = FXCollections.observableArrayList(alist);
+            exportCheckinWorkers = FXCollections.observableArrayList(alist);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return exportCheckinDetails;
+        return exportCheckinWorkers;
     }
     public static void exportWorker(ObservableList exportCheckinDetail) throws IOException {
-        List<ExportCheckinDetail> list = exportCheckinDetail;
+        List<ExportCheckinWorker> list = exportCheckinDetail;
 
         StringBuilder str = new StringBuilder("");
 
@@ -94,7 +94,7 @@ public class ExportCheckinDetail {
         str.append("OT Hour");
         str.append("\n");
 
-        for (ExportCheckinDetail eachstring : list) {
+        for (ExportCheckinWorker eachstring : list) {
             str.append(eachstring.getWorkerSTT()).append(";");
             str.append(eachstring.getWorkerName()).append(";");
             str.append(eachstring.getWorkerNumber()).append(";");

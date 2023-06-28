@@ -56,6 +56,7 @@ public class ImportDataByExcelController implements Initializable {
     ObservableList<DataToImport> ImportList;
     @FXML
     Button selectButton;
+
     @FXML
 //    Label choosefilenoti;
     @Override
@@ -67,38 +68,40 @@ public class ImportDataByExcelController implements Initializable {
 //        }
         employeeIDColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("employeeID"));
         employeeNameColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("employeeName"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<DataToImport,Date>("date"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, Date>("date"));
         checkinTimeColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("checkinTime"));
         checkoutTimeColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("checkoutTime"));
         selectColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, CheckBox>("select"));
         table.setItems(ImportList);
     }
+
     @FXML
-    public void chooseFile(ActionEvent event) throws  IOException{
+    public void chooseFile(ActionEvent event) throws IOException {
         System.out.println("Hello");
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("D:\\20222\\ITSS\\src\\main\\java\\hust\\workattendanceapp\\csvdata"));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV file", "*.csv"));
         File file = fileChooser.showOpenDialog(null);
 //        System.out.println(file.getAbsolutePath());
-        if (file != null){
+        if (file != null) {
 //            System.out.println(file.getAbsolutePath());
             try {
 //                System.out.println(file.getAbsolutePath());
-                ImportList= DataToImport.getImportList(file.getAbsolutePath());
+                ImportList = DataToImport.getImportList(file.getAbsolutePath());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
         table.setItems(ImportList);
     }
+
     @FXML
-    public void importToJson(ActionEvent event) throws IOException{
+    public void importToJson(ActionEvent event) throws IOException {
         ObservableList<DataToImport> recordList = table.getItems();
 //        ArrayList<DataToImport> buffer = new ArrayList();
-        for (DataToImport record : recordList){
+        for (DataToImport record : recordList) {
 //            System.out.println("start import");
-            if (record.getSelect().isSelected()){
+            if (record.getSelect().isSelected()) {
                 System.out.println("imported");
                 System.out.println(record);
                 Gson gson = new Gson();
@@ -111,6 +114,18 @@ public class ImportDataByExcelController implements Initializable {
 
     }
 
+    public void selectAll(ActionEvent event) throws IOException {
+        System.out.printf("all");
+        ObservableList<DataToImport> recordList = table.getItems();
+        CheckBox a = new CheckBox();
+        a.setSelected(true);
+        for (DataToImport record : recordList) {
+            record.setSelect(a);
+        }
+        table.setItems(recordList);
+        table.refresh();
+    }
+
     public void switchToHomepage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.MANAGER_HOMEPAGE_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -118,6 +133,7 @@ public class ImportDataByExcelController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     public void switchToEditDataRequestsList(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_REQUEST_LIST_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -125,6 +141,7 @@ public class ImportDataByExcelController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     public void switchToExportCheckinListUnit(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EXPORT_CHECKIN_LIST_UNIT_VIEW_FXML));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

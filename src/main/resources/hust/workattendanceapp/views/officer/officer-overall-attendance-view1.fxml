@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.workattendanceapp.controller.officer.OfficerOverallAttendance1Controller">
    <children>
-      <Pane fx:id="filter" layoutX="259.0" layoutY="91.0" onDragDetected="#filterTimekeepingByMonth" prefHeight="134.0" prefWidth="926.0">
+      <Pane fx:id="" layoutX="259.0" layoutY="91.0" prefHeight="134.0" prefWidth="926.0">
          <children>
             <Label layoutX="261.0" layoutY="76.0" text="20205004">
                <font>

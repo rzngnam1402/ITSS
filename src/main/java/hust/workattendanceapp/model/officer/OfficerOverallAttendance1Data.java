@@ -1,34 +1,29 @@
-package hust.workattendanceapp.model;
+package hust.workattendanceapp.model.officer;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class OfficerOverallAttendance1Data {
 
-    private String date;
+    private int date;
     private String startTime;
     private String endTime;
     private String late;
     private String early;
-    private String view;
-    private String request;
 
-    public OfficerOverallAttendance1Data(String date, String startTime, String endTime, String late, String early,
-            String view, String request) {
+    public OfficerOverallAttendance1Data(int date, String startTime, String endTime, String late, String early) {
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         this.late = late;
         this.early = early;
-        this.view = view;
-        this.request = request;
     }
 
-    public String getDate() {
+    public int getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(int date) {
         this.date = date;
     }
 
@@ -64,28 +59,13 @@ public class OfficerOverallAttendance1Data {
         this.early = early;
     }
 
-    public String getView() {
-        return view;
-    }
 
-    public void setView(String view) {
-        this.view = view;
-    }
+    public static ObservableList getData() {
+        ObservableList<OfficerOverallAttendance1Data> dataListOfficer = FXCollections.observableArrayList();
 
-    public String getRequest() {
-        return request;
-    }
+        dataListOfficer.add(new OfficerOverallAttendance1Data(1, "7:30","16:30", "NO", "YES"));
 
-    public void setRequest(String request) {
-        this.request = request;
-    }
+        return dataListOfficer;
 
-//    public static ObservableList getData() {
-//        ObservableList<OfficerOverallAttendance1Data> dataListOfficer = FXCollections.observableArrayList();
-//
-//        dataListOfficer.add(new OfficerOverallAttendance1Data())
-//
-//        return dataListOfficer;
-//
-//    }
+    }
 }

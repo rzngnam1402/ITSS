@@ -19,4 +19,6 @@ module hust.workattendanceapp {
     exports hust.workattendanceapp.model;
     exports hust.workattendanceapp.controller.manager;
     opens hust.workattendanceapp.controller.manager to javafx.fxml;
+    exports hust.workattendanceapp.model.officer;
+    opens hust.workattendanceapp.model.officer to com.google.gson, javafx.base;
 }

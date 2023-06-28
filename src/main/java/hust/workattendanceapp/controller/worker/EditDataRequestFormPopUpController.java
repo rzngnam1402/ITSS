@@ -36,7 +36,9 @@ public class EditDataRequestFormPopUpController {
     private TextField oldCheckoutTimeField;
     @FXML
     private TextField newCheckoutTimeField;
-
+    public void init(String employeeID) {
+        employeeIDLabel.setText(WorkerHomepageViewController.employeeID);
+    }
     public EditDataRequestForm createNewEditDataRequest(EditDataRequestForm detailData){
         detailData.setRequestID(UUID.randomUUID().toString());
         employeeIDLabel.setText(WorkerHomepageViewController.employeeID);
@@ -53,26 +55,33 @@ public class EditDataRequestFormPopUpController {
     public void confirmSendRequest(ActionEvent event) throws IOException {
         EditDataRequestForm editDataRequestForm = new EditDataRequestForm();
         editDataRequestForm = createNewEditDataRequest(editDataRequestForm);
-        System.out.println(editDataRequestForm);
-        try {
-            CRUDSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/EditDataRequestForm.json",editDataRequestForm);
+        if(editDataRequestForm.checkDataError(editDataRequestForm.getOldCheckinTime(),editDataRequestForm.getNewCheckinTime(),editDataRequestForm.getOldCheckoutTime(),editDataRequestForm.getNewCheckoutTime())) {
+
+            System.out.println(editDataRequestForm);
+            try {
+                CRUDSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/EditDataRequestForm.json", editDataRequestForm);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Send Edit Data Request !");
+            String s = "Send Edit Data Request Successfully";
+            alert.setContentText(s);
+            alert.showAndWait();
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.close();
         }
-        catch (Exception e){
-            e.printStackTrace();
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Time Input Error !");
+            String s = "You have typed wrong time format. Please check again!";
+            alert.setContentText(s);
+            alert.showAndWait();
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Send Edit Data Request !");
-        String s = "Send Edit Data Request Successfully";
-        alert.setContentText(s);
-        alert.showAndWait();
-        switchToPersonalAttendance(event);
     }
     public void cancelEdit(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.PERSONAL_ATTENDANCE));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     public void switchToPersonalAttendance(ActionEvent event) throws IOException {

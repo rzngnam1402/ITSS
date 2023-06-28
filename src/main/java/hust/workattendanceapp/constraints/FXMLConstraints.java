@@ -17,4 +17,5 @@ public class FXMLConstraints {
     public static String OFFICER_OVERALL_ATTENDANCE_VIEW1_FXML = "views/officer/officer-overall-attendance-view1.fxml";
 
     public static String OFFICER_DETAIL_ATTENDANCE_VIEW = "views/officer/officer-detail-attendance-view.fxml";
+    public static String REQUEST_APPROVAL_VIEW = "views/worker/request-approval-view.fxml";
 }

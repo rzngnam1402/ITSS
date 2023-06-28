@@ -2,7 +2,11 @@ package hust.workattendanceapp.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.UUID;
 
 public class EditDataRequestForm {
@@ -89,5 +93,32 @@ public class EditDataRequestForm {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+
+    public static boolean checkDataError(String oldCheckinTime, String newCheckinTime, String oldCheckoutTime, String newCheckoutTime) {
+        if (checkTimeField(oldCheckinTime) && checkTimeField(newCheckinTime) && checkTimeField(oldCheckoutTime) && checkTimeField(newCheckoutTime))
+        {
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Successful");
+//            String s = "Set time successfully!";
+//            alert.setContentText(s);
+//            alert.showAndWait();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public static boolean checkTimeField(String timeToCheck) {
+        System.out.println(timeToCheck);
+        try {
+            LocalTime.parse(timeToCheck);
+            System.out.println("Valid time string: " + timeToCheck);
+            return true;
+        } catch (DateTimeParseException | NullPointerException e) {
+            System.out.println("Invalid time string: " + timeToCheck);
+            return false;
+        }
     }
 }

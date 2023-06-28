@@ -5,7 +5,7 @@ import javafx.scene.control.CheckBox;
 import java.util.Date;
 
 public class ImportedInstance {
-    public ImportedInstance(String employeeID, String employeeName, Date date, String checkinTime, String checkoutTime) {
+    public ImportedInstance(String employeeID, String employeeName, String date, String checkinTime, String checkoutTime) {
         this.employeeID = employeeID;
         this.employeeName = employeeName;
         this.date = date;
@@ -14,7 +14,7 @@ public class ImportedInstance {
     }
     private String employeeID;
     private String employeeName;
-    private Date date;
+    private String date;
     private String checkinTime;
     private String checkoutTime;
 }

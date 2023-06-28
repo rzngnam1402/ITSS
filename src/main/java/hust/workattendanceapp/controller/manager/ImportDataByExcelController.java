@@ -1,15 +1,12 @@
 package hust.workattendanceapp.controller.manager;
 
-import com.google.gson.Gson;
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
 import hust.workattendanceapp.model.DataToImport;
 import hust.workattendanceapp.model.ImportedInstance;
 import hust.workattendanceapp.subsystem.subsystemController.CRUDSystem;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,7 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -57,15 +53,8 @@ public class ImportDataByExcelController implements Initializable {
     @FXML
     Button selectButton;
 
-    @FXML
-//    Label choosefilenoti;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        try {
-//            ImportList= DataToImport.getImportList();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
         employeeIDColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("employeeID"));
         employeeNameColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("employeeName"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, Date>("date"));
@@ -77,16 +66,11 @@ public class ImportDataByExcelController implements Initializable {
 
     @FXML
     public void chooseFile(ActionEvent event) throws IOException {
-        System.out.println("Hello");
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\20222\\ITSS\\src\\main\\java\\hust\\workattendanceapp\\csvdata"));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV file", "*.csv"));
         File file = fileChooser.showOpenDialog(null);
-//        System.out.println(file.getAbsolutePath());
         if (file != null) {
-//            System.out.println(file.getAbsolutePath());
             try {
-//                System.out.println(file.getAbsolutePath());
                 ImportList = DataToImport.getImportList(file.getAbsolutePath());
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -98,32 +82,37 @@ public class ImportDataByExcelController implements Initializable {
     @FXML
     public void importToJson(ActionEvent event) throws IOException {
         ObservableList<DataToImport> recordList = table.getItems();
-//        ArrayList<DataToImport> buffer = new ArrayList();
         for (DataToImport record : recordList) {
-//            System.out.println("start import");
             if (record.getSelect().isSelected()) {
-                System.out.println("imported");
-                System.out.println(record);
-                Gson gson = new Gson();
-                ImportedInstance new_record = new ImportedInstance(record.getEmployeeID(), record.getEmployeeName(),
-                        record.getDate(), record.getCheckinTime(), record.getCheckoutTime());
-//                String json = gson.toJson(new_record);
+                ImportedInstance new_record = new ImportedInstance(record.getEmployeeID(), record.getEmployeeName(), record.getDate(), record.getCheckinTime(), record.getCheckoutTime());
                 CRUDSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/excelmportedData.json", new_record);
             }
         }
+        alertSuccessful();
+    }
 
+    private void alertSuccessful() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Successful");
+        String s = "You have successful imported data !";
+        alert.setContentText(s);
+        alert.showAndWait();
     }
 
     public void selectAll(ActionEvent event) throws IOException {
-        System.out.printf("all");
         ObservableList<DataToImport> recordList = table.getItems();
-        CheckBox a = new CheckBox();
-        a.setSelected(true);
-        for (DataToImport record : recordList) {
-            record.setSelect(a);
-        }
+        recordList = setCheckBoxToTrue(recordList);
         table.setItems(recordList);
         table.refresh();
+    }
+
+    public ObservableList<DataToImport> setCheckBoxToTrue(ObservableList<DataToImport> recordList) {
+        for (DataToImport record : recordList) {
+            CheckBox a = new CheckBox();
+            a.setSelected(true);
+            record.setSelect(a);
+        }
+        return recordList;
     }
 
     public void switchToHomepage(ActionEvent event) throws IOException {

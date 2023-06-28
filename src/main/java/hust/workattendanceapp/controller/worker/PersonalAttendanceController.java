@@ -42,8 +42,11 @@ public class PersonalAttendanceController {
         //myLabel.setText(myDate.toString());
     }
     public void switchToHomepage(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.WORKER_HOMEPAGE_VIEW_FXML));
+        FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.WORKER_HOMEPAGE_VIEW_FXML));
+        Parent root = (Parent) loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        WorkerHomepageViewController controller = loader.getController();
+        controller.init(WorkerHomepageViewController.employeeID);
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -61,7 +64,9 @@ public class PersonalAttendanceController {
             FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_DATA_REQUEST_FORM_POP_UP));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            EditDataRequestFormPopUpController controller = loader.getController();
+            controller.init(WorkerHomepageViewController.employeeID);
+            stage = new Stage();
 
             stage.setScene(scene);
             stage.show();
@@ -69,5 +74,14 @@ public class PersonalAttendanceController {
             e.printStackTrace();
         }
     }
-
+    public void switchToRequestApproval(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.REQUEST_APPROVAL_VIEW));
+        Parent root = (Parent) loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        RequestApprovalController controller = loader.getController();
+        controller.init(WorkerHomepageViewController.employeeID);
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

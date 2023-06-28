@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hust.workattendanceapp.controller.worker.RequestApprovalController">
+   <children>
+      <AnchorPane layoutX="-1.0" prefHeight="804.0" prefWidth="218.0" style="-fx-background-color: #545a5a;">
+         <children>
+            <Text fill="WHITE" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WORK ATTENDANCE APPLICATION" textAlignment="CENTER" wrappingWidth="215.24867248535156">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <Button layoutX="32.0" layoutY="727.0" mnemonicParsing="false" onAction="#logOut" prefHeight="52.0" prefWidth="150.0" style="-fx-border-radius: 15px;" stylesheets="@../../styles/cancel-button-style.css" text="Logout" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Button layoutX="34.0" layoutY="729.0" mnemonicParsing="false" onAction="#logOut" prefHeight="52.0" prefWidth="150.0" style="-fx-border-radius: 15px;" stylesheets="@../../styles/cancel-button-style.css" text="Logout" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="-3.0" layoutY="178.0" mnemonicParsing="false" onAction="#switchToHomepage" prefHeight="52.0" prefWidth="221.0" text="Homepage">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="-3.0" layoutY="235.0" mnemonicParsing="false" onAction="#switchToPersonalAttendance" prefHeight="52.0" prefWidth="221.0" text="Personal Attendance">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="-3.0" layoutY="292.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="220.0" style="-fx-background-color: ffffff;" text="Request Approval">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="-3.0" layoutY="349.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="220.0" text="Edit Personal Information">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="table" fixedCellSize="80.0" layoutX="287.0" layoutY="185.0" prefHeight="504.0" prefWidth="954.0">
+         <columns>
+            <TableColumn fx:id="requestIDColumn" prefWidth="108.73880004882812" text="Request ID" />
+            <TableColumn fx:id="dateColumn" prefWidth="96.0" text="Date" />
+            <TableColumn fx:id="oldCheckInTimeColumn" prefWidth="122.40005493164062" text="Old Check In Time" />
+            <TableColumn fx:id="newCheckInTimeColumn" prefWidth="134.4000244140625" text="New Check In Time" />
+            <TableColumn fx:id="oldCheckOutTimeColumn" prefWidth="127.199951171875" text="Old Check Out Time" />
+            <TableColumn fx:id="newCheckOutTimeColumn" prefWidth="127.199951171875" text="New Check Out Time" />
+            <TableColumn fx:id="statusColumn" prefWidth="65.5999755859375" text="Status" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="176.0" text="Description" />
+         </columns>
+      </TableView>
+      <Text layoutX="287.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Request Approval List">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <Label fx:id="employIDLabel" layoutX="287.0" layoutY="106.0" text="Label">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

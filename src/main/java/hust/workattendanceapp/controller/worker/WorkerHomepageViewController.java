@@ -46,4 +46,15 @@ public class WorkerHomepageViewController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void switchToRequestApproval(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.REQUEST_APPROVAL_VIEW));
+        Parent root = (Parent) loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        RequestApprovalController controller = loader.getController();
+        controller.init(WorkerHomepageViewController.employeeID);
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

@@ -22,6 +22,7 @@ public class DataToImport {
         this.date = date;
         this.checkinTime = checkinTime;
         this.checkoutTime = checkoutTime;
+        this.select = new CheckBox();
 
     }
 
@@ -48,11 +49,18 @@ public class DataToImport {
         this.employeeName = employeeName;
     }
 
+    public Date getDate(){
+        return date;
+    }
+
+    public void setDate(Date date){
+        this.date = date;
+    }
     public String getCheckinTime() {
         return checkinTime;
     }
 
-    public void setCheckinTime(String employeeSex) {
+    public void setCheckinTime(String checkinTime) {
         this.checkinTime = checkinTime;
     }
 
@@ -68,7 +76,7 @@ public class DataToImport {
         return select;
     }
 
-    public void setSelect(CheckBox Checkout) {
+    public void setSelect(CheckBox select) {
         this.select = select;
     }
 
@@ -92,10 +100,9 @@ public class DataToImport {
             reader = new BufferedReader(new FileReader(path));
             while ((line = reader.readLine()) != null){
                 String[] row = line.split(",");
-                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 Date toDate = dateFormat.parse(row[2]);
                     ImportList.add(new DataToImport(row[0],row[1],toDate, row[3],row[4],null ));
-
 
             }
         }

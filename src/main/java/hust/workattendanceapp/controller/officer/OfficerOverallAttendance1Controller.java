@@ -151,8 +151,10 @@ public class OfficerOverallAttendance1Controller implements Initializable {
                         OfficerOverallAttendance1Data timekeepingOverview1 = getTableRow().getItem();
                         localDate = LocalDate.of(date.getValue().getYear(), date.getValue().getMonth(), timekeepingOverview1.getDate());
 
+
+
                         // lay doi tuong stage hien tai
-                    } else System.out.println("Request Butotn");
+                    } else System.out.println("Request Button");
                 });
             }
 

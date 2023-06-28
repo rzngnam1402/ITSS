@@ -1,4 +1,4 @@
-package hust.workattendanceapp.controller.manager;
+ package hust.workattendanceapp.controller.manager;
 
 import org.junit.jupiter.api.Test;
 

@@ -2,9 +2,7 @@ package hust.workattendanceapp.controller.manager;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
-import hust.workattendanceapp.model.EditDataRequest;
 import hust.workattendanceapp.model.ExportCheckinUnitList;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,7 +47,7 @@ public class ExportCheckinUnitListViewController implements Initializable {
         unitManagerColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinUnitList, String>("unitManager"));
         table.setItems(unitList);
     }
-    public void handleChooseUnit (ActionEvent event) throws IOException {
+    public void handleChooseUnit (ActionEvent event) throws Exception {
         ExportCheckinUnitList selected = table.getSelectionModel().getSelectedItem();
         if (selected == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -57,16 +55,41 @@ public class ExportCheckinUnitListViewController implements Initializable {
             String s = "Please choose one unit !";
             alert.setContentText(s);
             alert.showAndWait();
-            return;
+        } else if (selected.getSTT() == 1) {
+            switchToWorkerDetail(event);
+        } else if (selected.getSTT() == 2) {
+            switchToOfficerDetail(event);
         }
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        root = fxmlLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EXPORT_CHECKIN_DETAIL_VIEW).openStream());
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        ExportCheckinDetailViewController controller = fxmlLoader.getController();
-        controller.createNewDetail(selected);
-        stage.show();
+    }
+
+    private void switchToOfficerDetail(ActionEvent event) throws Exception {
+        try {
+            FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.EXPORT_CHECKIN_OFFICER_VIEW));
+            Parent root = (Parent) loader.load();
+            ExportCheckinOfficerViewController controller = loader.getController();
+            controller.createNewDetailOfficer();
+            scene = new Scene(root);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void switchToWorkerDetail (ActionEvent event) throws Exception{
+        try {
+            FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.EXPORT_CHECKIN_WORKER_VIEW));
+            Parent root = (Parent) loader.load();
+            ExportCheckinWorkerViewController controller = loader.getController();
+            controller.createNewDetailWorker();
+            scene = new Scene(root);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void switchToHomepage(ActionEvent event) throws IOException {

@@ -1,8 +1,11 @@
 package hust.workattendanceapp.controller.manager;
 
+import com.google.gson.Gson;
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
 import hust.workattendanceapp.model.DataToImport;
+import hust.workattendanceapp.model.ImportedInstance;
+import hust.workattendanceapp.subsystem.subsystemController.CRUDSystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +26,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.JarURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -37,15 +42,17 @@ public class ImportDataByExcelController implements Initializable {
     @FXML
     private TableView<DataToImport> table;
     @FXML
-    private TableColumn<DataToImport, String> IDColumn;
+    private TableColumn<DataToImport, String> employeeIDColumn;
     @FXML
-    private TableColumn<DataToImport, String> NameColumn;
+    private TableColumn<DataToImport, String> employeeNameColumn;
     @FXML
-    private TableColumn<DataToImport, String> CheckinColumn;
+    private TableColumn<DataToImport, Date> dateColumn;
     @FXML
-    private TableColumn<DataToImport, String> CheckoutColumn;
+    private TableColumn<DataToImport, String> checkinTimeColumn;
     @FXML
-    private TableColumn<DataToImport, CheckBox> SelectColumn;
+    private TableColumn<DataToImport, String> checkoutTimeColumn;
+    @FXML
+    private TableColumn<DataToImport, CheckBox> selectColumn;
     ObservableList<DataToImport> ImportList;
     @FXML
     Button selectButton;
@@ -58,18 +65,19 @@ public class ImportDataByExcelController implements Initializable {
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
-        IDColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("ID"));
-        NameColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("Name"));
-        CheckinColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("Checkin"));
-        CheckoutColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("Checkout"));
-        SelectColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, CheckBox>("Select"));
+        employeeIDColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("employeeID"));
+        employeeNameColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("employeeName"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<DataToImport,Date>("date"));
+        checkinTimeColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("checkinTime"));
+        checkoutTimeColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("checkoutTime"));
+        selectColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, CheckBox>("select"));
         table.setItems(ImportList);
     }
     @FXML
     public void chooseFile(ActionEvent event) throws  IOException{
         System.out.println("Hello");
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\20222\\ITSS\\src\\main\\java\\hust\\workattendanceapp\\model"));
+        fileChooser.setInitialDirectory(new File("D:\\20222\\ITSS\\src\\main\\java\\hust\\workattendanceapp\\csvdata"));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV file", "*.csv"));
         File file = fileChooser.showOpenDialog(null);
 //        System.out.println(file.getAbsolutePath());
@@ -83,6 +91,24 @@ public class ImportDataByExcelController implements Initializable {
             }
         }
         table.setItems(ImportList);
+    }
+    @FXML
+    public void importToJson(ActionEvent event) throws IOException{
+        ObservableList<DataToImport> recordList = table.getItems();
+//        ArrayList<DataToImport> buffer = new ArrayList();
+        for (DataToImport record : recordList){
+//            System.out.println("start import");
+            if (record.getSelect().isSelected()){
+                System.out.println("imported");
+                System.out.println(record);
+                Gson gson = new Gson();
+                ImportedInstance new_record = new ImportedInstance(record.getEmployeeID(), record.getEmployeeName(),
+                        record.getDate(), record.getCheckinTime(), record.getCheckoutTime());
+//                String json = gson.toJson(new_record);
+                CRUDSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/excelmportedData.json", new_record);
+            }
+        }
+
     }
 
     public void switchToHomepage(ActionEvent event) throws IOException {

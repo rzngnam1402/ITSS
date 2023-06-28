@@ -1,5 +1,31 @@
 [
   {
+    "requestID": 7,
+    "employeeID": "20201242",
+    "employeeName": "Tran Huu Son",
+    "employeeSex": "male",
+    "date": "24-06-2023",
+    "status": "pending",
+    "oldCheckinTime": "12:00",
+    "newCheckinTime": "12:00",
+    "oldCheckoutTime": "23:59",
+    "newCheckoutTime": "17:00",
+    "description": "I want to change my checkin time because I forgot to check ou."
+  },
+  {
+    "requestID": 6,
+    "employeeID": "20207582",
+    "employeeName": "Ho Yen Trinh",
+    "employeeSex": "female",
+    "date": "23-06-2023",
+    "status": "pending",
+    "oldCheckinTime": "00:00",
+    "newCheckinTime": "12:00",
+    "oldCheckoutTime": "17:00",
+    "newCheckoutTime": "17:00",
+    "description": "I want to change my checkin time because I forgot to check in."
+  },
+  {
     "requestID": 5,
     "employeeID": "20205004",
     "employeeName": "Le Giang Nam",
@@ -18,7 +44,7 @@
     "employeeName": "Do Khanh Ly",
     "employeeSex": "female",
     "date": "21-06-2023",
-    "status": "pending",
+    "status": "rejected",
     "oldCheckinTime": "13:05",
     "newCheckinTime": "13:00",
     "oldCheckoutTime": "17:00",

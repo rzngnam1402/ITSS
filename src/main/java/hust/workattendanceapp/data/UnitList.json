@@ -1,0 +1,14 @@
+[
+  {
+  "sTT": 1,
+  "unitName": "Worker",
+  "numOfEmployees": 12,
+  "unitManager": "Do Chi Thanh"
+  },
+  {
+  "sTT": 2,
+  "unitName": "Officer",
+  "numOfEmployees": 10,
+  "unitManager": "Andrew"
+  }
+]

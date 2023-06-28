@@ -8,61 +8,75 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DataToImport {
-    public DataToImport(String ID, String Name, String Checkin, String Checkout, CheckBox select) {
-        this.ID = ID;
-        this.Name = Name;
-        this.Checkin = Checkin;
-        this.Checkout = Checkout;
+    public DataToImport(String employeeID, String employeeName, Date date, String checkinTime, String checkoutTime, CheckBox select) {
+        this.employeeID = employeeID;
+        this.employeeName = employeeName;
+        this.date = date;
+        this.checkinTime = checkinTime;
+        this.checkoutTime = checkoutTime;
         this.select = new CheckBox();
+
     }
 
-    private String ID;
-    private String Name;
-    private String Checkin;
-    private String Checkout;
+    private String employeeID;
+    private String employeeName;
+    private Date date;
+    private String checkinTime;
+    private String checkoutTime;
     private CheckBox select;
 
-    public String getID() {
-        return ID;
+    public String getEmployeeID() {
+        return employeeID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setEmployeeID(String employeeID) {
+        this.employeeID = employeeID;
     }
 
-    public String getName() {
-        return Name;
+    public String getEmployeeName() {
+        return employeeName;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
-    public String getCheckin() {
-        return Checkin;
+    public Date getDate(){
+        return date;
     }
 
-    public void setCheckin(String employeeSex) {
-        this.Checkin = Checkin;
+    public void setDate(Date date){
+        this.date = date;
+    }
+    public String getCheckinTime() {
+        return checkinTime;
     }
 
-    public String getCheckout() {
-        return Checkout;
+    public void setCheckinTime(String checkinTime) {
+        this.checkinTime = checkinTime;
     }
 
-    public void setCheckout(String Checkout) {
-        this.Checkout = Checkout;
+    public String getCheckoutTime() {
+        return checkoutTime;
+    }
+
+    public void setCheckoutTime(String checkoutTime) {
+        this.checkoutTime = checkoutTime;
     }
 
     public CheckBox getSelect() {
         return select;
     }
 
-    public void setSelect(CheckBox Checkout) {
+    public void setSelect(CheckBox select) {
         this.select = select;
     }
 
@@ -81,13 +95,14 @@ public class DataToImport {
         BufferedReader reader = null;
         String line ="";
         System.out.println(path);
+
         try{
             reader = new BufferedReader(new FileReader(path));
             while ((line = reader.readLine()) != null){
                 String[] row = line.split(",");
-
-                    ImportList.add(new DataToImport(row[0],row[1], row[2], row[3],null));
-
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                Date toDate = dateFormat.parse(row[2]);
+                    ImportList.add(new DataToImport(row[0],row[1],toDate, row[3],row[4],null ));
 
             }
         }

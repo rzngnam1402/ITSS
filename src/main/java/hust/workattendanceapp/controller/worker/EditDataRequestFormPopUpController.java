@@ -74,7 +74,7 @@ public class EditDataRequestFormPopUpController {
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Time Input Error !");
-            String s = "You have typed wrong time format. Please check again!\n Format: hh:mm\nLimit 00:00 - 23:59";
+            String s = "You have typed wrong time format. Please check again!\nFormat: hh:mm\nLimit 00:00 - 23:59";
             alert.setContentText(s);
             alert.showAndWait();
         }

@@ -75,5 +75,16 @@
     "oldCheckoutTime": "23:00",
     "newCheckoutTime": "00:00",
     "description": "The system is not working at that time :("
+  },
+  {
+    "requestID": "ff43bf64-1044-46ff-9a0d-79f5998bb549",
+    "employeeID": "20205135",
+    "date": "2023-06-04",
+    "status": "Pending",
+    "oldCheckinTime": "10:00",
+    "newCheckinTime": "11:00",
+    "oldCheckoutTime": "17:00",
+    "newCheckoutTime": "19:00",
+    "description": "Traffic jam"
   }
 ]

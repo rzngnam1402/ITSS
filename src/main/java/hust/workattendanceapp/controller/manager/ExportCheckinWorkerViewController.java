@@ -63,12 +63,20 @@ public class ExportCheckinWorkerViewController implements Initializable {
         table.setItems(checkinDetails);
 
     }
+    public boolean checkMonthString (String month) {
+        if (month.matches("-?\\d+(\\.\\d+)?") && Integer.parseInt(month) > 0 && Integer.parseInt(month) < 13) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public void monthFilter(ActionEvent event) throws IOException {
         String month = monthField.getText();
         if (month.equals("")) {
             table.setItems(checkinDetails);
-        } else if (Integer.parseInt(month) > 0 && Integer.parseInt(month) < 13) {
+        } else if (checkMonthString(month)) {
             exportCheckinWorkers.removeAll(exportCheckinWorkers);
             for (ExportCheckinWorker eachstring : checkinDetails) {
                 if (eachstring.getWorkerMonth() == Integer.parseInt(month)) {
@@ -77,13 +85,12 @@ public class ExportCheckinWorkerViewController implements Initializable {
             }
             table.setItems(exportCheckinWorkers);
         } else alertFilterError();
-
     }
 
     public void alertFilterError() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error Input");
-        String s = "Month should be between 1 and 12 !";
+        String s = "Month should be an Integer between 1 and 12!";
         alert.setContentText(s);
         alert.showAndWait();
     }

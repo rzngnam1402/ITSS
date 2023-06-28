@@ -73,7 +73,7 @@ public class ImportDataByExcelController implements Initializable {
     public void chooseFile(ActionEvent event) throws  IOException{
         System.out.println("Hello");
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\20222\\ITSS\\src\\main\\java\\hust\\workattendanceapp\\model"));
+//        fileChooser.setInitialDirectory(new File("D:\\20222\\ITSS\\src\\main\\java\\hust\\workattendanceapp\\model"));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV file", "*.csv"));
         File file = fileChooser.showOpenDialog(null);
 //        System.out.println(file.getAbsolutePath());

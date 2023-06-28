@@ -3,7 +3,6 @@ package hust.workattendanceapp.controller.manager;
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
 import hust.workattendanceapp.model.ExportCheckinOfficer;
-import hust.workattendanceapp.model.ExportCheckinWorker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -21,30 +23,27 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-public class ExportCheckinWorkerViewController implements Initializable {
+public class ExportCheckinOfficerViewController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
     @FXML
-    private TableView<ExportCheckinWorker> table;
+    private TableView<ExportCheckinOfficer> table;
     @FXML
-    private TableColumn<ExportCheckinWorker, Integer> unitNumberDetail;
+    private TableColumn<ExportCheckinOfficer, Integer> officerSTTColumn;
     @FXML
-    private TableColumn<ExportCheckinWorker, Integer> workerSTTColumn;
+    private TableColumn<ExportCheckinOfficer, String> officerNameColumn;
     @FXML
-    private TableColumn<ExportCheckinWorker, String> workerNameColumn;
+    private TableColumn<ExportCheckinOfficer, Integer> officerNumberColumn;
     @FXML
-    private TableColumn<ExportCheckinWorker, Integer> workerNumberColumn;
+    private TableColumn<ExportCheckinOfficer, Integer> officerMonthColumn;
     @FXML
-    private TableColumn<ExportCheckinWorker, Integer> workerMonthColumn;
+    private TableColumn<ExportCheckinOfficer, Integer> officerWorkShiftColumn;
     @FXML
-    private TableColumn<ExportCheckinWorker, Integer> workerWorkHourColumn;
+    private TableColumn<ExportCheckinOfficer, Integer> officerUncompletedShiftColumn;
     @FXML
-    private TableColumn<ExportCheckinWorker, Integer> workerOTHourColumn;
-    @FXML
-    ObservableList<ExportCheckinWorker> checkinDetails;
-    ObservableList<ExportCheckinWorker> exportCheckinWorkers = FXCollections.observableArrayList();
+    ObservableList<ExportCheckinOfficer> checkinDetails;
+    ObservableList<ExportCheckinOfficer> exportCheckinOfficers = FXCollections.observableArrayList();
     @FXML
     private TextField monthField;
 
@@ -52,16 +51,15 @@ public class ExportCheckinWorkerViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-    public void createNewDetailWorker() {
-        checkinDetails = ExportCheckinWorker.getCheckinDetail();
-        workerSTTColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, Integer>("workerSTT"));
-        workerNameColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, String>("workerName"));
-        workerNumberColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, Integer>("workerNumber"));
-        workerMonthColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, Integer>("workerMonth"));
-        workerWorkHourColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, Integer>("workerWorkHour"));
-        workerOTHourColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinWorker, Integer>("workerOTHour"));
+    public void createNewDetailOfficer() {
+        checkinDetails = ExportCheckinOfficer.getCheckinDetail();
+        officerSTTColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinOfficer, Integer>("officerSTT"));
+        officerNameColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinOfficer, String>("officerName"));
+        officerNumberColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinOfficer, Integer>("officerNumber"));
+        officerMonthColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinOfficer, Integer>("officerMonth"));
+        officerWorkShiftColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinOfficer, Integer>("officerWorkShift"));
+        officerUncompletedShiftColumn.setCellValueFactory(new PropertyValueFactory<ExportCheckinOfficer, Integer>("officerUncompletedShift"));
         table.setItems(checkinDetails);
-
     }
 
     public void monthFilter(ActionEvent event) throws IOException {
@@ -69,13 +67,13 @@ public class ExportCheckinWorkerViewController implements Initializable {
         if (month.equals("")) {
             table.setItems(checkinDetails);
         } else if (Integer.parseInt(month) > 0 && Integer.parseInt(month) < 13) {
-            exportCheckinWorkers.removeAll(exportCheckinWorkers);
-            for (ExportCheckinWorker eachstring : checkinDetails) {
-                if (eachstring.getWorkerMonth() == Integer.parseInt(month)) {
-                    exportCheckinWorkers.add(new ExportCheckinWorker(eachstring.getWorkerSTT(), eachstring.getWorkerName(), eachstring.getWorkerNumber(), eachstring.getWorkerMonth(), eachstring.getWorkerWorkHour(), eachstring.getWorkerOTHour()));
+            exportCheckinOfficers.removeAll(exportCheckinOfficers);
+            for (ExportCheckinOfficer eachstring : checkinDetails) {
+                if (eachstring.getOfficerMonth() == Integer.parseInt(month)) {
+                    exportCheckinOfficers.add(new ExportCheckinOfficer(eachstring.getOfficerSTT(), eachstring.getOfficerName(), eachstring.getOfficerNumber(), eachstring.getOfficerMonth(), eachstring.getOfficerWorkShift(), eachstring.getOfficerUncompletedShift()));
                 }
             }
-            table.setItems(exportCheckinWorkers);
+            table.setItems(exportCheckinOfficers);
         } else alertFilterError();
 
     }
@@ -96,9 +94,9 @@ public class ExportCheckinWorkerViewController implements Initializable {
         alert.showAndWait();
     }
 
-    public void exportWorker() throws IOException {
-        if (exportCheckinWorkers.isEmpty()) ExportCheckinWorker.exportWorker(checkinDetails);
-        else ExportCheckinWorker.exportWorker(exportCheckinWorkers);
+    public void exportOfficer() throws IOException {
+        if (exportCheckinOfficers.isEmpty()) ExportCheckinOfficer.exportOfficer(checkinDetails);
+        else ExportCheckinOfficer.exportOfficer(exportCheckinOfficers);
         confirmExport();
     }
 

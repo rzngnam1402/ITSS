@@ -8,6 +8,7 @@ public class FXMLConstraints {
     public static String MANAGER_HOMEPAGE_VIEW_FXML = "views/manager/manager-homepage-view.fxml";
     public static String EXPORT_CHECKIN_LIST_UNIT_VIEW_FXML = "views/manager/export-checkin-list-unit-view.fxml";
     public static String EXPORT_CHECKIN_WORKER_VIEW = "views/manager/export-checkin-worker-view.fxml";
+    public static String EXPORT_CHECKIN_OFFICER_VIEW = "views/manager/export-checkin-officer-view.fxml";
     public static String IMPORT_DATA_BY_EXCEL_VIEW_FXML = "views/manager/import-data-excel-view.fxml";
     public static String OFFICER_OVERALL_ATTENDANCE_VIEW_FXML = "views/officer/officer-overall-attendance-view.fxml";
     public static String PERSONAL_ATTENDANCE = "views/worker/personal-attendance.fxml";

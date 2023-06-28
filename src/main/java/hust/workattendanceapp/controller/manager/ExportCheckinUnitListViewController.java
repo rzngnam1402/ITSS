@@ -57,6 +57,23 @@ public class ExportCheckinUnitListViewController implements Initializable {
             alert.showAndWait();
         } else if (selected.getSTT() == 1) {
             switchToWorkerDetail(event);
+        } else if (selected.getSTT() == 2) {
+            switchToOfficerDetail(event);
+        }
+    }
+
+    private void switchToOfficerDetail(ActionEvent event) throws Exception {
+        try {
+            FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.EXPORT_CHECKIN_OFFICER_VIEW));
+            Parent root = (Parent) loader.load();
+            ExportCheckinOfficerViewController controller = loader.getController();
+            controller.createNewDetailOfficer();
+            scene = new Scene(root);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

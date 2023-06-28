@@ -99,11 +99,6 @@ public class EditDataRequestForm {
     public static boolean checkDataError(String oldCheckinTime, String newCheckinTime, String oldCheckoutTime, String newCheckoutTime) {
         if (checkTimeField(oldCheckinTime) && checkTimeField(newCheckinTime) && checkTimeField(oldCheckoutTime) && checkTimeField(newCheckoutTime))
         {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Successful");
-//            String s = "Set time successfully!";
-//            alert.setContentText(s);
-//            alert.showAndWait();
             return true;
         }
         else {

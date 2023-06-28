@@ -74,7 +74,7 @@ public class EditDataRequestFormPopUpController {
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Time Input Error !");
-            String s = "You have typed wrong time format. Please check again!";
+            String s = "You have typed wrong time format. Please check again!\n Format: hh:mm\nLimit 00:00 - 23:59";
             alert.setContentText(s);
             alert.showAndWait();
         }
@@ -84,11 +84,4 @@ public class EditDataRequestFormPopUpController {
         stage.close();
     }
 
-    public void switchToPersonalAttendance(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.PERSONAL_ATTENDANCE));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 }

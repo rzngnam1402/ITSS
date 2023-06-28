@@ -14,7 +14,7 @@ public class FXMLConstraints {
     public static String PERSONAL_ATTENDANCE = "views/worker/personal-attendance.fxml";
     public static String EDIT_DATA_REQUEST_FORM_POP_UP = "views/worker/edit-data-request-form-pop-up.fxml";
 
-    public static String OFFICER_OVERALL_ATTENDANCE_VIEW1 = "views/officer/officer-overall-attendance-view1.fxml";
+    public static String OFFICER_OVERALL_ATTENDANCE_VIEW1_FXML = "views/officer/officer-overall-attendance-view1.fxml";
 
     public static String OFFICER_DETAIL_ATTENDANCE_VIEW = "views/officer/officer-detail-attendance-view.fxml";
 }

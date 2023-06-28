@@ -2,7 +2,11 @@ package hust.workattendanceapp.controller.officer;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
-import hust.workattendanceapp.model.OfficerOverallAttendanceData;
+import hust.workattendanceapp.model.officer.IOfficerTimekeepingOverview;
+import hust.workattendanceapp.model.officer.OfficerOverallAttendance1Data;
+import hust.workattendanceapp.model.officer.OfficerTimekeepingOverview;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,15 +14,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class OfficerOverallAttendance1Controller implements Initializable {
@@ -27,33 +31,41 @@ public class OfficerOverallAttendance1Controller implements Initializable {
     private Scene scene;
     private Parent root;
 
+    ObservableList<OfficerOverallAttendance1Data> dataList;
+
+    public static LocalDate localDate = LocalDate.now();
+    IOfficerTimekeepingOverview officerTimekeepingOverview = new OfficerTimekeepingOverview();
+    ObservableList<OfficerOverallAttendance1Data> timekeepingOverviews = FXCollections.observableArrayList();
+
+    LocalDateTime startTime = LocalDateTime.of(2023, 1, 1, 8, 00, 0);
+    LocalDateTime endTime = LocalDateTime.of(2023, 1, 1, 17, 30, 0);
 
     @FXML
     private DatePicker date;
 
     @FXML
-    private TableColumn<?, ?> dateColumn;
+    private TableColumn<OfficerOverallAttendance1Data, String> dateColumn;
 
     @FXML
-    private TableColumn<?, ?> startTimeColumn;
+    private TableColumn<OfficerOverallAttendance1Data, String> startTimeColumn;
 
     @FXML
-    private TableColumn<?, ?> endTimeColumn;
+    private TableColumn<OfficerOverallAttendance1Data, String> endTimeColumn;
 
     @FXML
-    private TableColumn<?, ?> lateColumn;
+    private TableColumn<OfficerOverallAttendance1Data, String> lateColumn;
 
     @FXML
-    private TableColumn<?, ?> earlyColumn;
+    private TableColumn<OfficerOverallAttendance1Data, String> earlyColumn;
 
     @FXML
-    private TableColumn<?, ?> viewColumn;
+    private TableColumn<OfficerOverallAttendance1Data, Button> viewColumn;
 
     @FXML
-    private TableColumn<?, ?> requestColumn;
+    private TableColumn<OfficerOverallAttendance1Data, Button> requestColumn;
 
     @FXML
-    private TableView<?> table;
+    private TableView<OfficerOverallAttendance1Data> table;
 
     @FXML
     private Button filter;
@@ -61,7 +73,10 @@ public class OfficerOverallAttendance1Controller implements Initializable {
 
     @FXML
     void filterTimekeepingByMonth(ActionEvent event) {
-
+        LocalDate selectDate = date.getValue();
+        OfficerOverallAttendance1Controller.localDate = selectDate;
+        timekeepingOverviews = officerTimekeepingOverview.getTimekeepingByMonth(OfficerOverallAttendance1Controller.localDate, startTime, endTime);
+        table.setItems(timekeepingOverviews);
     }
 
     @FXML
@@ -103,7 +118,54 @@ public class OfficerOverallAttendance1Controller implements Initializable {
 
     @Override
     public void initialize (URL location, ResourceBundle resources) {
+        dataList = OfficerOverallAttendance1Data.getData();
 
+        dateColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallAttendance1Data, String>("date"));
+        startTimeColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallAttendance1Data, String>("startTime"));
+        endTimeColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallAttendance1Data, String>("endTime"));
+        lateColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallAttendance1Data, String>("late"));
+        earlyColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallAttendance1Data, String>("early"));
+
+        table.setItems(dataList);
+
+        viewColumn.setCellFactory(createButtonCell("View", "view-butotn"));
+
+        requestColumn.setCellFactory(createButtonCell("Request", "request-button"));
+
+        timekeepingOverviews = officerTimekeepingOverview.getTimekeepingByMonth(OfficerOverallAttendance1Controller.localDate, startTime, endTime);
+        table.setItems(timekeepingOverviews);
+
+    }
+
+    private Callback<TableColumn<OfficerOverallAttendance1Data, Button>, TableCell<OfficerOverallAttendance1Data, Button>>
+    createButtonCell(String buttonText, String buttonStyle) {
+        return column -> new TableCell<OfficerOverallAttendance1Data, Button>() {
+            private final Button button = new Button(buttonText);
+
+            {
+                button.getStyleClass().add(buttonStyle);
+                button.setOnAction(event -> {
+                    OfficerOverallAttendance1Data timekeepingOverview = getTableRow().getItem();
+
+                    if(buttonStyle.equals("View-button")) {
+                        OfficerOverallAttendance1Data timekeepingOverview1 = getTableRow().getItem();
+                        localDate = LocalDate.of(date.getValue().getYear(), date.getValue().getMonth(), timekeepingOverview1.getDate());
+
+                        // lay doi tuong stage hien tai
+                    } else System.out.println("Request Butotn");
+                });
+            }
+
+            @Override
+            protected void updateItem (Button item, boolean empty) {
+                super.updateItem(item, empty);
+                if(empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(button);
+                }
+            }
+        };
     }
 
 

@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.JarURLConnection;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -37,15 +38,17 @@ public class ImportDataByExcelController implements Initializable {
     @FXML
     private TableView<DataToImport> table;
     @FXML
-    private TableColumn<DataToImport, String> IDColumn;
+    private TableColumn<DataToImport, String> employeeIDColumn;
     @FXML
-    private TableColumn<DataToImport, String> NameColumn;
+    private TableColumn<DataToImport, String> employeeNameColumn;
     @FXML
-    private TableColumn<DataToImport, String> CheckinColumn;
+    private TableColumn<DataToImport, Date> dateColumn;
     @FXML
-    private TableColumn<DataToImport, String> CheckoutColumn;
+    private TableColumn<DataToImport, String> checkinTimeColumn;
     @FXML
-    private TableColumn<DataToImport, CheckBox> SelectColumn;
+    private TableColumn<DataToImport, String> checkoutTimeColumn;
+    @FXML
+    private TableColumn<DataToImport, CheckBox> selectColumn;
     ObservableList<DataToImport> ImportList;
     @FXML
     Button selectButton;
@@ -58,11 +61,12 @@ public class ImportDataByExcelController implements Initializable {
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
-        IDColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("ID"));
-        NameColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("Name"));
-        CheckinColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("Checkin"));
-        CheckoutColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("Checkout"));
-        SelectColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, CheckBox>("Select"));
+        employeeIDColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("employeeID"));
+        employeeNameColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("employeeName"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<DataToImport,Date>("date"));
+        checkinTimeColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("checkinTime"));
+        checkoutTimeColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("checkoutTime"));
+        selectColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, CheckBox>("select"));
         table.setItems(ImportList);
     }
     @FXML

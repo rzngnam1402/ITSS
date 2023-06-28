@@ -1,8 +1,11 @@
 package hust.workattendanceapp.controller.manager;
 
+import com.google.gson.Gson;
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
 import hust.workattendanceapp.model.DataToImport;
+import hust.workattendanceapp.model.ImportedInstance;
+import hust.workattendanceapp.subsystem.subsystemController.CRUDSystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.JarURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -73,7 +77,7 @@ public class ImportDataByExcelController implements Initializable {
     public void chooseFile(ActionEvent event) throws  IOException{
         System.out.println("Hello");
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\20222\\ITSS\\src\\main\\java\\hust\\workattendanceapp\\model"));
+        fileChooser.setInitialDirectory(new File("D:\\20222\\ITSS\\src\\main\\java\\hust\\workattendanceapp\\csvdata"));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV file", "*.csv"));
         File file = fileChooser.showOpenDialog(null);
 //        System.out.println(file.getAbsolutePath());
@@ -87,6 +91,24 @@ public class ImportDataByExcelController implements Initializable {
             }
         }
         table.setItems(ImportList);
+    }
+    @FXML
+    public void importToJson(ActionEvent event) throws IOException{
+        ObservableList<DataToImport> recordList = table.getItems();
+//        ArrayList<DataToImport> buffer = new ArrayList();
+        for (DataToImport record : recordList){
+//            System.out.println("start import");
+            if (record.getSelect().isSelected()){
+                System.out.println("imported");
+                System.out.println(record);
+                Gson gson = new Gson();
+                ImportedInstance new_record = new ImportedInstance(record.getEmployeeID(), record.getEmployeeName(),
+                        record.getDate(), record.getCheckinTime(), record.getCheckoutTime());
+//                String json = gson.toJson(new_record);
+                CRUDSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/excelmportedData.json", new_record);
+            }
+        }
+
     }
 
     public void switchToHomepage(ActionEvent event) throws IOException {

@@ -2,10 +2,7 @@ package hust.workattendanceapp.controller.manager;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
-import hust.workattendanceapp.controller.worker.WorkerHomepageViewController;
-import hust.workattendanceapp.model.EditDataRequest;
 import hust.workattendanceapp.model.ExportCheckinUnitList;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,9 +62,9 @@ public class ExportCheckinUnitListViewController implements Initializable {
 
     public void switchToWorkerDetail (ActionEvent event) throws Exception{
         try {
-            FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.EXPORT_CHECKIN_DETAIL_VIEW));
+            FXMLLoader loader = new FXMLLoader(WorkAttendanceApplication.class.getResource(FXMLConstraints.EXPORT_CHECKIN_WORKER_VIEW));
             Parent root = (Parent) loader.load();
-            ExportCheckinDetailViewController controller = loader.getController();
+            ExportCheckinWorkerViewController controller = loader.getController();
             controller.createNewDetailWorker();
             scene = new Scene(root);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

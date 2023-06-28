@@ -74,7 +74,7 @@
             <Font size="24.0" />
          </font>
       </CheckBox>
-      <Button layoutX="1070.0" layoutY="713.0" mnemonicParsing="false" text="Import">
+      <Button layoutX="1070.0" layoutY="713.0" mnemonicParsing="false" onAction="#importToJson" text="Import">
          <font>
             <Font size="24.0" />
          </font>

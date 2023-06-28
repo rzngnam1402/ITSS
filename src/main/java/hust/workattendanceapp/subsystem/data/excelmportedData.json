@@ -1,0 +1,16 @@
+[
+  {
+    "employeeID": "20205004",
+    "employeeName": "Le Giang Nam",
+    "date": "Jun 28, 2023, 12:00:00",
+    "checkinTime": "8:28",
+    "checkoutTime": "17:45"
+  },
+  {
+    "employeeID": "20200377",
+    "employeeName": "Do Khanh Ly",
+    "date": "Jun 28, 2024, 12:00:00",
+    "checkinTime": "9:28",
+    "checkoutTime": "18:45"
+  }
+]

@@ -1,21 +1,13 @@
 STT;Worker Name;Worker Number;Month;Work Hour;OT Hour
-1;Do Chi Thanh;1254;6;50;50
-2;Do Chi Thanh;1254;6;50;50
-3;Do Chi Thanh;1254;6;50;50
-4;Do Chi Thanh;1254;6;50;50
-5;Do Chi Thanh;1254;6;50;510
-6;Do Chi Thanh;1254;6;50;510
-7;Do Chi Thanh;1254;6;50;510
-8;Do Chi Thanh;1254;6;50;510
-9;Do Chi Thanh;1254;6;50;510
-10;Do Chi Thanh;1254;6;50;510
-11;Do Chi Thanh;1254;6;50;510
-12;Do Chi Thanh;1254;6;50;510
-13;Do Chi Thanh;1254;6;50;510
-14;Do Chi Thanh;1254;6;50;510
-15;Do Chi Thanh;1254;6;50;510
-16;Do Chi Thanh;1254;6;50;510
-17;Do Chi Thanh;1254;6;50;510
-18;Do Chi Thanh;1254;6;50;510
-19;Do Chi Thanh;1254;6;50;510
-20;Do Chi Thanh;1254;6;50;510
+1;John Doe;12345;1;70;5
+2;Jane Smith;67890;1;65;0
+3;David Johnson;54321;1;68;10
+4;Emily Brown;98765;1;72;8
+5;Michael Davis;13579;1;66;0
+6;Olivia Wilson;24680;1;69;3
+7;Daniel Martinez;54321;1;68;10
+8;Sophia Anderson;98765;1;72;8
+9;Matthew Wilson;24680;1;69;3
+10;Emma Davis;13579;1;66;0
+11;Liam Johnson;54321;1;68;10
+12;Ava Brown;98765;1;72;8

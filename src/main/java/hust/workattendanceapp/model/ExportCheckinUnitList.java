@@ -1,13 +1,14 @@
 package hust.workattendanceapp.model;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.FileReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class ExportCheckinUnitList {
     public ExportCheckinUnitList(int sTT, String unitName, int numOfEmployees, String unitManager) {
@@ -53,16 +54,18 @@ public class ExportCheckinUnitList {
     public static ObservableList getUnitList() {
         ObservableList<ExportCheckinUnitList> exportCheckinUnitList = FXCollections.observableArrayList();
         // get data from json file
-        exportCheckinUnitList.add(new ExportCheckinUnitList(1, "Intro to AI",
-                12, "Do Chi Thanh"));
-        exportCheckinUnitList.add(new ExportCheckinUnitList(2, "UX UI",
-                43, "Le Giang Nam"));
-        exportCheckinUnitList.add(new ExportCheckinUnitList(3, "ITSS",
-                12, "Chi Thanh Do"));
-        exportCheckinUnitList.add(new ExportCheckinUnitList(4, "Lich su Dang",
-                34, "Dung Minh Bui"));
-        exportCheckinUnitList.add(new ExportCheckinUnitList(5, "Project 1",
-                76, "Adudu"));
+        Gson gson = new Gson();
+        try {
+            ArrayList<ExportCheckinUnitList> alist;
+            FileReader reader = new FileReader("src/main/java/hust/workattendanceapp/data/UnitList.json");
+            Type type = new TypeToken<ArrayList<ExportCheckinUnitList>>() {
+            }.getType();
+            alist = gson.fromJson(reader, type);
+            exportCheckinUnitList = FXCollections.observableArrayList(alist);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return exportCheckinUnitList;
     }
 }

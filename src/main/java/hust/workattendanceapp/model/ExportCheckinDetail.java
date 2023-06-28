@@ -1,17 +1,20 @@
 package hust.workattendanceapp.model;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExportCheckinDetail {
-    public ExportCheckinDetail(int unitNumberDetail, int workerSTT, String workerName, int workerNumber, int workerMonth, int workerWorkHour, int workerOTHour) {
-        this.unitNumberDetail = unitNumberDetail;
+    public ExportCheckinDetail(int workerSTT, String workerName, int workerNumber, int workerMonth, int workerWorkHour, int workerOTHour) {
         this.workerSTT = workerSTT;
         this.workerName = workerName;
         this.workerNumber = workerNumber;
@@ -20,20 +23,12 @@ public class ExportCheckinDetail {
         this.workerOTHour = workerOTHour;
     }
 
-    private int unitNumberDetail;
     private int workerSTT;
     private String workerName;
     private int workerNumber;
     private int workerMonth;
     private int workerWorkHour;
     private int workerOTHour;
-
-    public int getUnitNumberDetail() {
-        return unitNumberDetail;
-    }
-    public void setUnitNumberDetail(int unitNumberDetail) {
-        this.unitNumberDetail = unitNumberDetail;
-    }
     public int getWorkerSTT() {
         return workerSTT;
     }
@@ -72,50 +67,22 @@ public class ExportCheckinDetail {
     }
     public static ObservableList getCheckinDetail() {
         ObservableList<ExportCheckinDetail> exportCheckinDetails = FXCollections.observableArrayList();
-        exportCheckinDetails.add(new ExportCheckinDetail(1, 1,
-                "Do Chi Thanh", 1254, 6, 50, 50));
-        exportCheckinDetails.add(new ExportCheckinDetail(1, 2,
-                "Do Chi Thanh", 1254, 6, 50, 50));
-        exportCheckinDetails.add(new ExportCheckinDetail(1, 3,
-                "Do Chi Thanh", 1254, 6, 50, 50));
-        exportCheckinDetails.add(new ExportCheckinDetail(1, 4,
-                "Do Chi Thanh", 1254, 6, 50, 50));
-        exportCheckinDetails.add(new ExportCheckinDetail(2, 5,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(2, 6,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(2, 7,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(3, 8,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(3, 9,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(3, 10,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(4, 11,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(4, 12,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(5, 13,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(5, 14,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(5, 15,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(5, 16,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(5, 17,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(5, 18,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(5, 19,
-                "Do Chi Thanh", 1254, 6, 50, 510));
-        exportCheckinDetails.add(new ExportCheckinDetail(5, 20,
-                "Do Chi Thanh", 1254, 6, 50, 510));
+        Gson gson = new Gson();
+        try {
+            ArrayList<ExportCheckinDetail> alist;
+            FileReader reader = new FileReader("src/main/java/hust/workattendanceapp/data/WorkerDetail.json");
+            Type type = new TypeToken<ArrayList<ExportCheckinDetail>>() {
+            }.getType();
+            alist = gson.fromJson(reader, type);
+            exportCheckinDetails = FXCollections.observableArrayList(alist);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return exportCheckinDetails;
     }
-    public static void exportWorker() throws IOException {
-        List<ExportCheckinDetail> list = getCheckinDetail();
+    public static void exportWorker(ObservableList exportCheckinDetail) throws IOException {
+        List<ExportCheckinDetail> list = exportCheckinDetail;
 
         StringBuilder str = new StringBuilder("");
 

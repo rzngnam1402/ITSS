@@ -1,4 +1,4 @@
-package hust.workattendanceapp.model;
+package hust.workattendanceapp.model.officer;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

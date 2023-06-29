@@ -1,4 +1,4 @@
-package hust.workattendanceapp.model;
+package hust.workattendanceapp.model.manager;
 
 import javafx.scene.control.CheckBox;
 

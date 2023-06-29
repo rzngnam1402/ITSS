@@ -2,7 +2,6 @@ package hust.workattendanceapp.controller.worker;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
-import hust.workattendanceapp.model.EditDataRequest;
 import hust.workattendanceapp.subsystem.subsystemController.CRUDSystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +20,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class RequestApprovalController implements Initializable {

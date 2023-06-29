@@ -1,0 +1,30 @@
+[
+  {
+    "employeeID": "20205004",
+    "employeeName": "Le Giang Nam",
+    "date": "28-06-2023",
+    "checkinTime": "8:28",
+    "checkoutTime": "17:45"
+  },
+  {
+    "employeeID": "20200377",
+    "employeeName": "Do Khanh Ly",
+    "date": "28-06-2024",
+    "checkinTime": "9:28",
+    "checkoutTime": "18:45"
+  },
+  {
+    "employeeID": "20205025",
+    "employeeName": "Do Chi Thanh",
+    "date": "28-06-2025",
+    "checkinTime": "9:25",
+    "checkoutTime": "19:45"
+  },
+  {
+    "employeeID": "20205070",
+    "employeeName": "Bui Minh Dung",
+    "date": "28-06-2026",
+    "checkinTime": "8:20",
+    "checkoutTime": "20:45"
+  }
+]

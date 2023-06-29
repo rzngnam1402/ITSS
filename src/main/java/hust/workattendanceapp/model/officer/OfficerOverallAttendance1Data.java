@@ -148,9 +148,11 @@ public class OfficerOverallAttendance1Data {
     public OfficerOverallAttendance1Data() {}
 
     public static void main (String args[]) throws FileNotFoundException {
-        OfficerOverallAttendance1Data data = new OfficerOverallAttendance1Data();
-        data.test();
-        System.out.println(data.test().get(0).getStringDate());
+        List<TestDateReader> testDateReaders = OfficerOverallAttendance1Data.test();
+
+        for(TestDateReader testDateReader : testDateReaders) {
+            System.out.println(testDateReader.getStringDate());
+        }
     }
 
 //    class LocalDateSerializer implements JsonSerializer<LocalDate> {

@@ -28,6 +28,12 @@ class ExportCheckinWorkerViewControllerTest {
     //Invalid String
     @Test
     void tc5() {assertFalse(checkinWorker.checkMonthString("123a"));}
+
+    //Invalid String
     @Test
     void tc6() {assertFalse(checkinWorker.checkMonthString("abc"));}
+
+    //Invalid String
+    @Test
+    void tc7() {assertFalse(checkinWorker.checkMonthString("1,"));}
 }

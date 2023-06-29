@@ -5,6 +5,8 @@ import hust.workattendanceapp.constraints.FXMLConstraints;
 import hust.workattendanceapp.model.manager.DataToImport;
 import hust.workattendanceapp.model.manager.ImportedInstance;
 import hust.workattendanceapp.subsystem.subsystemController.CRUDSystem;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,7 +48,8 @@ public class ImportDataByExcelController implements Initializable {
     ObservableList<DataToImport> ImportList;
     @FXML
     Button selectButton;
-
+    @FXML
+    CheckBox selectAllCheckBox;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         employeeIDColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("employeeID"));
@@ -56,6 +59,22 @@ public class ImportDataByExcelController implements Initializable {
         checkoutTimeColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, String>("checkoutTime"));
         selectColumn.setCellValueFactory(new PropertyValueFactory<DataToImport, CheckBox>("select"));
         table.setItems(ImportList);
+//        selectAllCheckBox.setSelected(false);
+        selectAllCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                ObservableList<DataToImport> recordList = table.getItems();
+
+                if (selectAllCheckBox.isSelected()) {
+                    recordList = setCheckBoxStatus(recordList, true);
+                } else recordList = setCheckBoxStatus(recordList, false);
+
+
+                table.setItems(recordList);
+                table.refresh();
+            }
+        });
     }
 
     @FXML
@@ -76,14 +95,23 @@ public class ImportDataByExcelController implements Initializable {
     @FXML
     public void importToJson(ActionEvent event) throws IOException {
         ObservableList<DataToImport> recordList = table.getItems();
+        String ifSuccess = "Inserted to json";
         for (DataToImport record : recordList) {
             if (record.getSelect().isSelected()) {
                 ImportedInstance new_record = new ImportedInstance(record.getEmployeeID(), record.getEmployeeName(), record.getDate(), record.getCheckinTime(), record.getCheckoutTime());
-                CRUDSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/excelmportedData.json", new_record);
+                ifSuccess = CRUDSystem.insertOne("src/main/java/hust/workattendanceapp/subsystem/data/excelmportedData.json", new_record);
+                if (ifSuccess != "Inserted to json") {
+                    alertUnsuccessful();
+                    break;
+                }
             }
         }
-        alertSuccessful();
+        if (ifSuccess == "Inserted to json") {
+            alertSuccessful();
+        }
+
     }
+
 
     private void alertSuccessful() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -93,17 +121,18 @@ public class ImportDataByExcelController implements Initializable {
         alert.showAndWait();
     }
 
-    public void selectAll(ActionEvent event) throws IOException {
-        ObservableList<DataToImport> recordList = table.getItems();
-        recordList = setCheckBoxToTrue(recordList);
-        table.setItems(recordList);
-        table.refresh();
+    private void alertUnsuccessful() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Unsuccessful");
+        String s = "Failed!";
+        alert.setContentText(s);
+        alert.showAndWait();
     }
 
-    public ObservableList<DataToImport> setCheckBoxToTrue(ObservableList<DataToImport> recordList) {
+    public ObservableList<DataToImport> setCheckBoxStatus(ObservableList<DataToImport> recordList, boolean status) {
         for (DataToImport record : recordList) {
             CheckBox a = new CheckBox();
-            a.setSelected(true);
+            a.setSelected(status);
             record.setSelect(a);
         }
         return recordList;

@@ -1,6 +1,6 @@
 package hust.workattendanceapp.controller.manager;
 
-import hust.workattendanceapp.model.DataToImport;
+import hust.workattendanceapp.model.manager.DataToImport;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 
 class ImportDataByExcelControllerTest {

@@ -86,5 +86,16 @@
     "oldCheckoutTime": "17:00",
     "newCheckoutTime": "19:00",
     "description": "Traffic jam"
+  },
+  {
+    "requestID": "108d2bac-c638-4154-a255-4b670d9b1a85",
+    "employeeID": "20205135",
+    "date": "2023-06-07",
+    "status": "Pending",
+    "oldCheckinTime": "12:12",
+    "newCheckinTime": "12:12",
+    "oldCheckoutTime": "17:40",
+    "newCheckoutTime": "13:23",
+    "description": ""
   }
 ]

@@ -2,7 +2,7 @@ package hust.workattendanceapp.controller.manager;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
-import hust.workattendanceapp.model.ExportCheckinOfficer;
+import hust.workattendanceapp.model.officer.ExportCheckinOfficer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

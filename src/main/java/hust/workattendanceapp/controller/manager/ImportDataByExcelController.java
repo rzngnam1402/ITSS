@@ -2,8 +2,8 @@ package hust.workattendanceapp.controller.manager;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
-import hust.workattendanceapp.model.DataToImport;
-import hust.workattendanceapp.model.ImportedInstance;
+import hust.workattendanceapp.model.manager.DataToImport;
+import hust.workattendanceapp.model.manager.ImportedInstance;
 import hust.workattendanceapp.subsystem.subsystemController.CRUDSystem;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,15 +20,9 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.JarURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.Scanner;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ImportDataByExcelController implements Initializable {
     private Stage stage;

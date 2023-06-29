@@ -3,9 +3,7 @@ package hust.workattendanceapp.controller.manager;
 
 import hust.workattendanceapp.WorkAttendanceApplication;
 import hust.workattendanceapp.constraints.FXMLConstraints;
-import hust.workattendanceapp.controller.officer.ManagerHomepageViewController;
-import hust.workattendanceapp.model.EditDataRequest;
-import javafx.collections.FXCollections;
+import hust.workattendanceapp.model.manager.EditDataRequest;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

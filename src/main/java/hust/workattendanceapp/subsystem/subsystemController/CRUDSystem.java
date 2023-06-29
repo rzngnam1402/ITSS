@@ -2,9 +2,7 @@ package hust.workattendanceapp.subsystem.subsystemController;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import hust.workattendanceapp.model.EditDataRequest;
-import hust.workattendanceapp.model.EditDataRequestForm;
-import javafx.collections.ObservableList;
+import hust.workattendanceapp.model.manager.EditDataRequestForm;
 
 import java.io.*;
 import java.lang.reflect.Type;

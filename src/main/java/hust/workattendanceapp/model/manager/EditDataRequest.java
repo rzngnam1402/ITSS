@@ -1,8 +1,7 @@
-package hust.workattendanceapp.model;
+package hust.workattendanceapp.model.manager;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import hust.workattendanceapp.subsystem.subsystemController.CRUDSystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

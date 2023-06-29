@@ -77,6 +77,7 @@ public class ExportCheckinOfficerViewController implements Initializable {
         String month = monthField.getText();
         if (month.equals("")) {
             table.setItems(checkinDetails);
+            exportCheckinOfficers = checkinDetails;
         } else if (checkMonthString(month)) {
             exportCheckinOfficers.removeAll(exportCheckinOfficers);
             for (ExportCheckinOfficer eachstring : checkinDetails) {

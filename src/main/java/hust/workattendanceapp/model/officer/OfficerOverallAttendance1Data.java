@@ -5,12 +5,11 @@ import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -136,6 +135,26 @@ public class OfficerOverallAttendance1Data {
 
         Gson gson = gsonBuilder.setPrettyPrinting().create();
 
+        //Sinh du lieu
+//        List<TestDateReader> dates = new ArrayList<>();
+//        LocalDate startDate = LocalDate.of(2023, 1, 1);
+//        while(!startDate.isAfter(LocalDate.now())){
+//            int startHour = (int) ((Math.random() * (23 - 0)) + 0);
+//            int endHour = (int) ((Math.random() * (23 - 0)) + 0);
+//            int startMinute = (int) ((Math.random() * (59 - 0)) + 0);
+//            int endMinute = (int) ((Math.random() * (59 - 0)) + 0);
+//            LocalDateTime startTime = LocalDateTime.of(startDate, LocalTime.of(startHour, startMinute));
+//            LocalDateTime endTime = LocalDateTime.of(startDate, LocalTime.of(endHour, endMinute));
+//            dates.add(new TestDateReader(startDate, startTime, endTime));
+//            startDate = startDate.plusDays(1);
+//        }
+//
+//        try {
+//            gson.toJson(dates, new FileWriter("src/main/java/hust/workattendanceapp/data/OfficerOverall.json"));
+//        } catch(IOException exception) {
+//            exception.printStackTrace();
+//        }
+
         FileReader reader = new FileReader("src/main/java/hust/workattendanceapp/data/OfficerOverall.json");
         Type type = new TypeToken<List<TestDateReader>>() {}.getType();
 
@@ -148,11 +167,7 @@ public class OfficerOverallAttendance1Data {
     public OfficerOverallAttendance1Data() {}
 
     public static void main (String args[]) throws FileNotFoundException {
-        List<TestDateReader> testDateReaders = OfficerOverallAttendance1Data.test();
 
-        for(TestDateReader testDateReader : testDateReaders) {
-            System.out.println(testDateReader.getStringDate());
-        }
     }
 
 //    class LocalDateSerializer implements JsonSerializer<LocalDate> {

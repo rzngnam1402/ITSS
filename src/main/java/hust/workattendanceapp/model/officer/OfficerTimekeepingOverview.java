@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class OfficerTimekeepingOverview implements IOfficerTimekeepingOverview {
 
@@ -58,17 +59,27 @@ public class OfficerTimekeepingOverview implements IOfficerTimekeepingOverview {
     public ObservableList<OfficerOverallData> getTimekeepingByMonth(LocalDate fromDate, LocalDateTime start, LocalDateTime end) {
         ObservableList<OfficerOverallData> timekeepingOverviews = FXCollections.observableArrayList();
 
-//        List<OfficerOverallAttendance1Data> datas = OfficerOverallAttendance1Data.getData();
-//        for(OfficerOverallAttendance1Data data : datas) {
-//            System.out.println(data.getStringDate() + data.getStringEndTime() + data.getStringStartTime());
-//        }
         try {
             List<TestDateReader> data = OfficerOverallAttendance1Data.test();
+            List<TestDateReader> resultDatas = data.stream().filter((testDateReader -> {
+                return testDateReader.getDate().getMonth().equals(fromDate.getMonth()) &&
+                    testDateReader.getDate().getYear() == fromDate.getYear();
+            })).collect(Collectors.toList());
+
+            for (TestDateReader oneDate : resultDatas) {
+                OfficerOverallData result = new OfficerOverallData(
+                        oneDate.getStringDate(),
+                        oneDate.getStringStartTime(),
+                        oneDate.getStringEndTime(),
+                        this.getComeLateTime(start, oneDate.getStartTime()),
+                        this.getReturnEarlyTime(end, oneDate.getEndTime())
+                );
+                System.out.println(result.toString());
+                timekeepingOverviews.add(result);
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-
 
         //data = OfficerOverallAttendance1Data.test();
 

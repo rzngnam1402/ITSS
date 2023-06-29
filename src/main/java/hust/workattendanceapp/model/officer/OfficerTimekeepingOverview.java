@@ -3,6 +3,7 @@ package hust.workattendanceapp.model.officer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -54,9 +55,22 @@ public class OfficerTimekeepingOverview implements IOfficerTimekeepingOverview {
     }
 
     @Override
-    public ObservableList<OfficerOverallAttendance1Data> getTimekeepingByMonth(LocalDate time, LocalDateTime start, LocalDateTime end) {
-        ObservableList<OfficerOverallAttendance1Data> timekeepingOverviews = FXCollections.observableArrayList();
-        //List<LongInfor>
+    public ObservableList<OfficerOverallData> getTimekeepingByMonth(LocalDate fromDate, LocalDateTime start, LocalDateTime end) {
+        ObservableList<OfficerOverallData> timekeepingOverviews = FXCollections.observableArrayList();
+
+//        List<OfficerOverallAttendance1Data> datas = OfficerOverallAttendance1Data.getData();
+//        for(OfficerOverallAttendance1Data data : datas) {
+//            System.out.println(data.getStringDate() + data.getStringEndTime() + data.getStringStartTime());
+//        }
+        try {
+            List<TestDateReader> data = OfficerOverallAttendance1Data.test();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
+        //data = OfficerOverallAttendance1Data.test();
 
         return timekeepingOverviews;
     }

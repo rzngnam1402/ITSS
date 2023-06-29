@@ -13,6 +13,6 @@ public interface IOfficerTimekeepingOverview {
     public String getReturnEarlyTime(LocalDateTime returningTime, LocalDateTime endTime);
     public String getComeLateTime(LocalDateTime commingTime, LocalDateTime startTime);
 
-    public ObservableList<OfficerOverallAttendance1Data> getTimekeepingByMonth(LocalDate time, LocalDateTime start, LocalDateTime end);
+    public ObservableList<OfficerOverallData> getTimekeepingByMonth(LocalDate time, LocalDateTime start, LocalDateTime end);
 
 }

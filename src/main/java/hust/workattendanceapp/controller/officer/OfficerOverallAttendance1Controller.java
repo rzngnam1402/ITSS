@@ -36,7 +36,7 @@ public class OfficerOverallAttendance1Controller implements Initializable {
 
     public static LocalDate localDate = LocalDate.now();
     IOfficerTimekeepingOverview officerTimekeepingOverview = new OfficerTimekeepingOverview();
-    ObservableList<OfficerOverallAttendance1Data> timekeepingOverviews = FXCollections.observableArrayList();
+    ObservableList<OfficerOverallData> timekeepingOverviews = FXCollections.observableArrayList();
 
     LocalDateTime startTime = LocalDateTime.of(2023, 1, 1, 8, 00, 0);
     LocalDateTime endTime = LocalDateTime.of(2023, 1, 1, 17, 30, 0);
@@ -45,25 +45,25 @@ public class OfficerOverallAttendance1Controller implements Initializable {
     private DatePicker date;
 
     @FXML
-    private TableColumn<OfficerOverallAttendance1Data, Integer> dateColumn;
+    private TableColumn<OfficerOverallData, Integer> dateColumn;
 
     @FXML
-    private TableColumn<OfficerOverallAttendance1Data, String> startTimeColumn;
+    private TableColumn<OfficerOverallData, String> startTimeColumn;
 
     @FXML
-    private TableColumn<OfficerOverallAttendance1Data, String> endTimeColumn;
+    private TableColumn<OfficerOverallData, String> endTimeColumn;
 
     @FXML
-    private TableColumn<OfficerOverallAttendance1Data, String> lateColumn;
+    private TableColumn<OfficerOverallData, String> lateColumn;
 
     @FXML
-    private TableColumn<OfficerOverallAttendance1Data, String> earlyColumn;
+    private TableColumn<OfficerOverallData, String> earlyColumn;
 
     @FXML
-    private TableColumn<OfficerOverallAttendance1Data, Button> viewColumn;
+    private TableColumn<OfficerOverallData, Button> viewColumn;
 
     @FXML
-    private TableColumn<OfficerOverallAttendance1Data, Button> requestColumn;
+    private TableColumn<OfficerOverallData, Button> requestColumn;
 
     @FXML
     private TableView<OfficerOverallData> table;
@@ -76,8 +76,8 @@ public class OfficerOverallAttendance1Controller implements Initializable {
     void filterTimekeepingByMonth(ActionEvent event) {
         LocalDate selectDate = date.getValue();
         OfficerOverallAttendance1Controller.localDate = selectDate;
-//        timekeepingOverviews = officerTimekeepingOverview.getTimekeepingByMonth(OfficerOverallAttendance1Controller.localDate, startTime, endTime);
-//        table.setItems(timekeepingOverviews);
+        timekeepingOverviews = officerTimekeepingOverview.getTimekeepingByMonth(OfficerOverallAttendance1Controller.localDate, startTime, endTime);
+        table.setItems(timekeepingOverviews);
     }
 
     @Override
@@ -85,36 +85,35 @@ public class OfficerOverallAttendance1Controller implements Initializable {
 
         dataList = OfficerOverallAttendance1Data.getData();
 
-        dateColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallAttendance1Data, Integer>("date"));
-        startTimeColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallAttendance1Data, String>("startTime"));
-        endTimeColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallAttendance1Data, String>("endTime"));
-        lateColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallAttendance1Data, String>("late"));
-        earlyColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallAttendance1Data, String>("early"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallData, Integer>("date"));
+        startTimeColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallData, String>("startTime"));
+        endTimeColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallData, String>("endTime"));
+        lateColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallData, String>("comeLate"));
+        earlyColumn.setCellValueFactory(new PropertyValueFactory<OfficerOverallData, String>("returnEarly"));
 
         date.setValue(LocalDate.now());
 
-        viewColumn.setCellFactory(createButtonCell("View", "view-butotn"));
+        viewColumn.setCellFactory(createButtonCell("View", "view-button"));
 
         requestColumn.setCellFactory(createButtonCell("Request", "request-button"));
 
-        //timekeepingOverviews = officerTimekeepingOverview.getTimekeepingByMonth(OfficerOverallAttendance1Controller.localDate, startTime, endTime);
-        //table.setItems(timekeepingOverviews);
-        table.setItems(dataList);
+        timekeepingOverviews = officerTimekeepingOverview.getTimekeepingByMonth(OfficerOverallAttendance1Controller.localDate, startTime, endTime);
+        table.setItems(timekeepingOverviews);
 
     }
 
-    private Callback<TableColumn<OfficerOverallAttendance1Data, Button>, TableCell<OfficerOverallAttendance1Data, Button>>
+    private Callback<TableColumn<OfficerOverallData, Button>, TableCell<OfficerOverallData, Button>>
     createButtonCell(String buttonText, String buttonStyle) {
-        return column -> new TableCell<OfficerOverallAttendance1Data, Button>() {
+        return column -> new TableCell<OfficerOverallData, Button>() {
             private final Button button = new Button(buttonText);
 
             {
                 button.getStyleClass().add(buttonStyle);
                 button.setOnAction(event -> {
-                    OfficerOverallAttendance1Data timekeepingOverview = getTableRow().getItem();
+                    OfficerOverallData timekeepingOverview = getTableRow().getItem();
 
                     if(buttonStyle.equals("View-button")) {
-                        OfficerOverallAttendance1Data timekeepingOverview1 = getTableRow().getItem();
+                        OfficerOverallData timekeepingOverview1 = getTableRow().getItem();
                         //localDate = LocalDate.of(date.getValue().getYear(), date.getValue().getMonth(), timekeepingOverview1.getDate());
 
 

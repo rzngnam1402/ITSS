@@ -44,5 +44,11 @@ public class TestDateReader {
         return this.endTime.getHour()+":"+this.startTime.getMinute();
     }
 
+    public TestDateReader(LocalDate date, LocalDateTime startTime, LocalDateTime endTime) {
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
 
+    public TestDateReader() {}
 }

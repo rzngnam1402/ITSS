@@ -69,7 +69,7 @@
             <TableColumn fx:id="selectColumn" prefWidth="117.5" text="Select" />
          </columns>
       </TableView>
-      <CheckBox layoutX="897.0" layoutY="723.0" mnemonicParsing="false" onAction="#selectAll" text="Select all">
+      <CheckBox fx:id="selectAllCheckBox" layoutX="897.0" layoutY="723.0" mnemonicParsing="false" text="Select all">
          <font>
             <Font size="24.0" />
          </font>

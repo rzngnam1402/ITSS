@@ -28,38 +28,83 @@ class ImportDataByExcelControllerTest {
 
     @Test
     void tc1() {
-        CheckBox a = new CheckBox();
-        a.setSelected(true);
-        CheckBox b = new CheckBox();
-        b.setSelected(false);
+        CheckBox result = new CheckBox();
+        result.setSelected(false);
+        CheckBox compare = new CheckBox();
+        compare.setSelected(true);
+
         ObservableList<DataToImport> resultList = FXCollections.observableArrayList();
         resultList.add(new DataToImport("20205004", "Le Giang Nam",
-                "28-06-2023", "8:28", "17:45", a));
-        resultList.get(0).setSelect(a);
+                "28-06-2023", "8:28", "17:45", result));
+        resultList.get(0).setSelect(result);
+
         ObservableList<DataToImport> comparedList = FXCollections.observableArrayList();
         comparedList.add(new DataToImport("20205004", "Le Giang Nam",
-                "28-06-2023", "8:28", "17:45", b));
+                "28-06-2023", "8:28", "17:45", compare));
         ImportDataByExcelController importData = new ImportDataByExcelController();
-        comparedList = importData.setCheckBoxToTrue(comparedList);
+        comparedList = importData.setCheckBoxStatus(comparedList,false);
+        assertEquals(resultList.get(0).getSelect().isSelected(), comparedList.get(0).getSelect().isSelected());
+    }
+
+
+    @Test
+    void tc2() {
+        CheckBox result = new CheckBox();
+        result.setSelected(true);
+        CheckBox compare = new CheckBox();
+        compare.setSelected(false);
+
+        ObservableList<DataToImport> resultList = FXCollections.observableArrayList();
+        resultList.add(new DataToImport("20205004", "Le Giang Nam",
+                "28-06-2023", "8:28", "17:45", result));
+        resultList.get(0).setSelect(result);
+
+        ObservableList<DataToImport> comparedList = FXCollections.observableArrayList();
+        comparedList.add(new DataToImport("20205004", "Le Giang Nam",
+                "28-06-2023", "8:28", "17:45", compare));
+        ImportDataByExcelController importData = new ImportDataByExcelController();
+        comparedList = importData.setCheckBoxStatus(comparedList,true);
         assertEquals(resultList.get(0).getSelect().isSelected(), comparedList.get(0).getSelect().isSelected());
     }
 
     @Test
-    void tc2() {
-        CheckBox a = new CheckBox();
-        a.setSelected(false);
-        CheckBox b = new CheckBox();
-        b.setSelected(false);
+    void tc3() {
+        CheckBox result = new CheckBox();
+        result.setSelected(true);
+        CheckBox compare = new CheckBox();
+        compare.setSelected(true);
+
         ObservableList<DataToImport> resultList = FXCollections.observableArrayList();
         resultList.add(new DataToImport("20205004", "Le Giang Nam",
-                "28-06-2023", "8:28", "17:45", a));
-        resultList.get(0).setSelect(a);
+                "28-06-2023", "8:28", "17:45", result));
+        resultList.get(0).setSelect(result);
+
         ObservableList<DataToImport> comparedList = FXCollections.observableArrayList();
         comparedList.add(new DataToImport("20205004", "Le Giang Nam",
-                "28-06-2023", "8:28", "17:45", b));
+                "28-06-2023", "8:28", "17:45", compare));
         ImportDataByExcelController importData = new ImportDataByExcelController();
-        comparedList = importData.setCheckBoxToTrue(comparedList);
-        assertNotEquals(resultList.get(0).getSelect().isSelected(), comparedList.get(0).getSelect().isSelected());
+        comparedList = importData.setCheckBoxStatus(comparedList,true);
+        assertEquals(resultList.get(0).getSelect().isSelected(), comparedList.get(0).getSelect().isSelected());
+    }
+
+    @Test
+    void tc4() {
+        CheckBox result = new CheckBox();
+        result.setSelected(false);
+        CheckBox compare = new CheckBox();
+        compare.setSelected(false);
+
+        ObservableList<DataToImport> resultList = FXCollections.observableArrayList();
+        resultList.add(new DataToImport("20205004", "Le Giang Nam",
+                "28-06-2023", "8:28", "17:45", result));
+        resultList.get(0).setSelect(result);
+
+        ObservableList<DataToImport> comparedList = FXCollections.observableArrayList();
+        comparedList.add(new DataToImport("20205004", "Le Giang Nam",
+                "28-06-2023", "8:28", "17:45", compare));
+        ImportDataByExcelController importData = new ImportDataByExcelController();
+        comparedList = importData.setCheckBoxStatus(comparedList,false);
+        assertEquals(resultList.get(0).getSelect().isSelected(), comparedList.get(0).getSelect().isSelected());
     }
 
     // Inner class to initialize JavaFX toolkit

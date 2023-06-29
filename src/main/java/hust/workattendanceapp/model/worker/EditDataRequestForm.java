@@ -95,25 +95,4 @@ public class EditDataRequestForm {
         this.description = description;
     }
 
-
-    public static boolean checkDataError(String oldCheckinTime, String newCheckinTime, String oldCheckoutTime, String newCheckoutTime) {
-        if (checkTimeField(oldCheckinTime) && checkTimeField(newCheckinTime) && checkTimeField(oldCheckoutTime) && checkTimeField(newCheckoutTime))
-        {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    public static boolean checkTimeField(String timeToCheck) {
-        System.out.println(timeToCheck);
-        try {
-            LocalTime.parse(timeToCheck);
-            System.out.println("Valid time string: " + timeToCheck);
-            return true;
-        } catch (DateTimeParseException | NullPointerException e) {
-            System.out.println("Invalid time string: " + timeToCheck);
-            return false;
-        }
-    }
 }

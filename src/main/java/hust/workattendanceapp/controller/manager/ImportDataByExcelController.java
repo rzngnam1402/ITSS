@@ -116,6 +116,13 @@ public class ImportDataByExcelController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    public void switchToOverallAttendance(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.OFFICER_OVERALL_ATTENDANCE_VIEW1_FXML));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public void switchToEditDataRequestsList(ActionEvent event) throws IOException {
         root = FXMLLoader.load(WorkAttendanceApplication.class.getResource(FXMLConstraints.EDIT_REQUEST_LIST_VIEW_FXML));

@@ -122,7 +122,7 @@ public class ExportCheckinOfficer {
 
     public static void whenWriteStringUsingBufferedWritter_thenCorrect(String commaseparatedlist)
             throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/hust/workattendanceapp/csvdata/checkinOfficer.csv"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/hust/workattendanceapp/data/csvdata/checkinOfficer.csv"));
         writer.write(commaseparatedlist);
 
         writer.close();

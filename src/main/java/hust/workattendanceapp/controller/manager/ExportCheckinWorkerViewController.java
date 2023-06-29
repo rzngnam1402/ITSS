@@ -63,15 +63,18 @@ public class ExportCheckinWorkerViewController implements Initializable {
 
     }
     public boolean checkMonthString (String month) {
+        System.out.println(month);
         if (month.matches("-?\\d+(\\.\\d+)?") && Integer.parseInt(month) > 0 && Integer.parseInt(month) < 13) {
+            System.out.println("Valid Month String: " + month);
             return true;
         }
         else {
+            System.out.println("Invalid Month String: " + month);
             return false;
         }
     }
 
-    public void monthFilter(ActionEvent event) throws IOException {
+    public void monthFilter() {
         String month = monthField.getText();
         if (month.equals("")) {
             table.setItems(checkinDetails);

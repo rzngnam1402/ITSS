@@ -15,7 +15,7 @@ class ExportCheckinWorkerViewControllerTest {
 
     //Valid Month Boundary
     @Test
-    void tc2() {assertFalse(checkinWorker.checkMonthString("13"));}
+    void tc2() {assertTrue(checkinWorker.checkMonthString("12"));}
 
     //Invalid Month Boundary
     @Test
@@ -28,6 +28,12 @@ class ExportCheckinWorkerViewControllerTest {
     //Invalid String
     @Test
     void tc5() {assertFalse(checkinWorker.checkMonthString("123a"));}
+
+    //Invalid String
     @Test
     void tc6() {assertFalse(checkinWorker.checkMonthString("abc"));}
+
+    //Invalid String
+    @Test
+    void tc7() {assertFalse(checkinWorker.checkMonthString("1,"));}
 }

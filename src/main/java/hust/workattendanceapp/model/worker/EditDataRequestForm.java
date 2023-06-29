@@ -1,4 +1,4 @@
-package hust.workattendanceapp.model.manager;
+package hust.workattendanceapp.model.worker;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -1,6 +1,6 @@
 package hust.workattendanceapp.controller.worker;
 
-import hust.workattendanceapp.model.manager.EditDataRequestForm;
+import hust.workattendanceapp.model.worker.EditDataRequestForm;
 import hust.workattendanceapp.subsystem.subsystemController.CRUDSystem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

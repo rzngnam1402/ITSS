@@ -71,8 +71,8 @@ public class OfficerTimekeepingOverview implements IOfficerTimekeepingOverview {
                         oneDate.getStringDate(),
                         oneDate.getStringStartTime(),
                         oneDate.getStringEndTime(),
-                        this.getComeLateTime(start, oneDate.getStartTime()),
-                        this.getReturnEarlyTime(end, oneDate.getEndTime())
+                        this.getComeLateTime(oneDate.getStartTime(), start),
+                        this.getReturnEarlyTime(oneDate.getEndTime(), end)
                 );
                 System.out.println(result.toString());
                 timekeepingOverviews.add(result);

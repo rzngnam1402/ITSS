@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 
 public class OfficerOverallAttendance1Controller implements Initializable {
@@ -168,5 +170,24 @@ public class OfficerOverallAttendance1Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    public boolean checkTimeString(String month, String year) {
+        System.out.println(month + year);
+        if (month.matches("-?\\d+(\\.\\d+)?") && Integer.parseInt(month) > 0 && Integer.parseInt(month) < 13) {
+            if (year.matches("-?\\d+(\\.\\d+)?") && Integer.parseInt(year) > 0) {
+                System.out.println("Valid Month and Year String: " + month + ", " + year);
+                return true;
+            } else {
+                System.out.println("Invalid Month and Year String: " + month + ", " + year);
+                return false;
+            }
+        }
+        else {
+            System.out.println("Invalid Month and Year String: " + month + ", " + year);
+            return false;
+        }
+
+    }
+
 
 }

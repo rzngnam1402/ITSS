@@ -90,8 +90,8 @@
           <TableColumn fx:id="dateColumn" prefWidth="144.6888427734375" text="Date" />
           <TableColumn fx:id="startTimeColumn" minWidth="0.0" prefWidth="141.80047607421875" text="Start time" />
             <TableColumn fx:id="endTimeColumn" minWidth="0.0" prefWidth="151.800537109375" text="End time" />
-            <TableColumn fx:id="lateColumn" minWidth="0.0" prefWidth="156.7672119140625" text="Late " />
-            <TableColumn fx:id="earlyColumn" minWidth="0.0" prefWidth="140.7327880859375" text="Về sớm" />
+            <TableColumn fx:id="lateColumn" minWidth="0.0" prefWidth="156.7672119140625" text="Come Late " />
+            <TableColumn fx:id="earlyColumn" minWidth="0.0" prefWidth="140.7327880859375" text="Return Early" />
             <TableColumn fx:id="viewColumn" minWidth="0.0" prefWidth="146.5" text="View" />
             <TableColumn fx:id="requestColumn" minWidth="0.0" prefWidth="146.5" text="Request" />
         </columns>

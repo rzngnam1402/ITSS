@@ -106,7 +106,6 @@ public class OfficerOverallAttendance1Controller implements Initializable {
     createButtonCell(String buttonText, String buttonStyle) {
         return column -> new TableCell<OfficerOverallData, Button>() {
             private final Button button = new Button(buttonText);
-
             {
                 button.getStyleClass().add(buttonStyle);
                 button.setOnAction(event -> {
@@ -114,11 +113,10 @@ public class OfficerOverallAttendance1Controller implements Initializable {
 
                     if(buttonStyle.equals("View-button")) {
                         OfficerOverallData timekeepingOverview1 = getTableRow().getItem();
-                        //localDate = LocalDate.of(date.getValue().getYear(), date.getValue().getMonth(), timekeepingOverview1.getDate());
-
-
+                        localDate = LocalDate.of(date.getValue().getYear(), date.getValue().getMonth(), Integer.parseInt(timekeepingOverview1.getDate()));
 
                         // lay doi tuong stage hien tai
+
                     } else System.out.println("Request Button");
                 });
             }
@@ -160,7 +158,6 @@ public class OfficerOverallAttendance1Controller implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 
     @FXML
